@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#090d12">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<title>Etanol ou Gasolina? Calculadora</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <h1 id="mainTitle">⛽ Etanol ou Gasolina?</h1>
+  <p class="sub">Informe o preço dos combustíveis e escolha o veículo. O app calcula o rendimento e custo real por quilômetro.</p>
+
+  <!-- Toggle Diesel -->
+  <div class="toggle-card diesel-toggle-card">
+    <div class="toggle-info">
+      <label for="toggleDiesel" class="toggle-title">Meu veículo é a diesel</label>
+      <span class="toggle-desc">Ative caso seu veículo utilize óleo diesel (S10 / S500)</span>
+    </div>
+    <label class="switch" for="toggleDiesel" title="Veículo a diesel">
+      <input type="checkbox" id="toggleDiesel">
+      <span class="slider"></span>
+    </label>
+  </div>
+
+  <!-- Mensagem exclusiva para Diesel -->
+  <div id="dieselMessage" class="card diesel-card" hidden>
+    <div class="diesel-badge">⚠️ MOTOR A DIESEL DETECTADO</div>
+    <h2>Incompatibilidade Técnica: Motores a Diesel Não Utilizam Gasolina nem Etanol</h2>
+    <p class="diesel-desc">
+      Motores a diesel operam por <b>ignição espontânea por alta compressão</b> e necessitam da lubricidade específica do óleo diesel (S10 ou S500).
+      <br><br>
+      <b>Nunca abasteça seu veículo a diesel com gasolina ou etanol</b>: a ignição descontrolada e a ausência de lubrificação destroem a bomba injetora de alta pressão, os bicos e o conjunto móvel do motor em poucos quilômetros.
+    </p>
+  </div>
+
+  <!-- Conteúdo principal da Calculadora -->
+  <div id="mainContent">
+    <form id="form" class="card" novalidate>
+      <div class="field" id="etanolField">
+        <label for="etanol">Etanol (R$/L)</label>
+        <div class="price"><span>R$</span><input id="etanol" type="text" inputmode="decimal" placeholder="0,00" autocomplete="off" maxlength="7"></div>
+      </div>
+      <div class="field">
+        <label for="comum">Gasolina comum (R$/L)</label>
+        <div class="price"><span>R$</span><input id="comum" type="text" inputmode="decimal" placeholder="0,00" autocomplete="off" maxlength="7"></div>
+      </div>
+      <div class="field">
+        <label for="aditivada">Gasolina aditivada (R$/L)</label>
+        <div class="price"><span>R$</span><input id="aditivada" type="text" inputmode="decimal" placeholder="0,00" autocomplete="off" maxlength="7"></div>
+      </div>
+      <div class="field">
+        <label for="premium">Gasolina premium (R$/L)</label>
+        <div class="price"><span>R$</span><input id="premium" type="text" inputmode="decimal" placeholder="0,00" autocomplete="off" maxlength="7"></div>
+      </div>
+      <div class="field" id="brandField" hidden>
+        <label for="brand">Marca da gasolina premium</label>
+        <select id="brand"></select>
+      </div>
+
+      <div class="field">
+        <label for="carro">Veículo e Versão</label>
+        <select id="carro"></select>
+        <div id="carroCustom" hidden>
+          <div class="toggle-card">
+            <div class="toggle-info">
+              <label for="toggleEtanol" class="toggle-title">Calculadora de etanol</label>
+              <span class="toggle-desc">Ative para motor flex ou desative se o carro for apenas a gasolina</span>
+            </div>
+            <label class="switch" for="toggleEtanol" title="Ativar ou desativar calculadora de etanol">
+              <input type="checkbox" id="toggleEtanol" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+          <div class="grid2">
+            <div><label for="kmGC">Gasolina – cidade (km/L)</label><div class="price"><input id="kmGC" type="text" inputmode="decimal" placeholder="0,0" autocomplete="off" maxlength="5"></div></div>
+            <div><label for="kmGE">Gasolina – estrada (km/L)</label><div class="price"><input id="kmGE" type="text" inputmode="decimal" placeholder="0,0" autocomplete="off" maxlength="5"></div></div>
+          </div>
+          <div id="customEtanolFields" class="grid2">
+            <div><label for="kmEC">Etanol – cidade (km/L)</label><div class="price"><input id="kmEC" type="text" inputmode="decimal" placeholder="0,0" autocomplete="off" maxlength="5"></div></div>
+            <div><label for="kmEE">Etanol – estrada (km/L)</label><div class="price"><input id="kmEE" type="text" inputmode="decimal" placeholder="0,0" autocomplete="off" maxlength="5"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Rabo de Galo (Mistura 50/50) com emoji de drink -->
+      <div id="rachadorSection" class="field">
+        <div class="toggle-card rachador-toggle-card">
+          <div class="toggle-info">
+            <label for="toggleRachador" class="toggle-title">🍸 Rabo de Galo (Mistura 50/50)</label>
+            <span class="toggle-desc">Calcula litros exatos de etanol e gasolina para atingir 50% de etanol e 50% de gasolina pura no tanque</span>
+          </div>
+          <label class="switch" for="toggleRachador" title="Ativar cálculo de Rabo de Galo">
+            <input type="checkbox" id="toggleRachador">
+            <span class="slider"></span>
+          </label>
+        </div>
+
+        <div id="rachadorBox" class="rachador-content" hidden>
+          <div class="rachador-input-wrap">
+            <label for="litrosMistura">Volume total desejado da mistura (Litros):</label>
+            <div class="price">
+              <input id="litrosMistura" type="text" inputmode="numeric" placeholder="40" value="40" maxlength="3">
+              <span>L</span>
+            </div>
+          </div>
+          <div id="rachadorResult" class="rachador-result-cards"></div>
+        </div>
+      </div>
+
+      <fieldset class="field">
+        <legend>Tipo de percurso</legend>
+        <div class="seg">
+          <label><input type="radio" name="percurso" value="cidade"><span>🏙️ Cidade</span></label>
+          <label><input type="radio" name="percurso" value="misto" checked><span>🔀 Misto</span></label>
+          <label><input type="radio" name="percurso" value="estrada"><span>🛣️ Estrada</span></label>
+        </div>
+      </fieldset>
+      <button type="submit">Calcular</button>
+      <div class="error" id="error" role="alert" hidden></div>
+    </form>
+
+    <section id="result" class="card" aria-live="polite" hidden></section>
+
+    <div class="card">
+      <details>
+        <summary>Como o app calcula / rendimentos usados</summary>
+        <table id="effTable"></table>
+        <p class="note">
+          O custo por km é <b>preço ÷ km/L</b>: quanto menor, melhor. A tabela acima exibe o consumo oficial do veículo selecionado (tabela Inmetro / PBEV).
+          Percurso misto = 50% da distância na cidade e 50% na estrada.
+        </p>
+        <p class="note">
+          <b>Teor oficial de etanol na gasolina:</b> A gasolina comum e a aditivada contêm <b>32% de etanol anidro</b> por regulamentação, enquanto as gasolinas premium contêm <b>25% de etanol anidro</b>.
+        </p>
+        <p class="note">
+          <b>⚠️ Alerta sobre Gasolina Aditivada:</b> Não existe regulamentação que determine proporção mínima ou máxima obrigatória de aditivo para que a gasolina seja vendida como aditivada no posto. Vale mais a pena abastecer com <b>gasolina comum e dosar um aditivo avulso</b> de marca confiável, ou optar por <b>gasolina premium</b> (com maior octanagem e aditivação comprovada).
+        </p>
+        <p class="note">
+          <b>⚠️ Alerta de Saúde do Motor:</b> Trajetos curtos (menos de 15 minutos) degradam o óleo do motor precocemente, pois não evaporam a condensação. O <b>etanol é um forte agravante</b> nesses trajetos frios devido ao seu alto calor de vaporização.
+        </p>
+      </details>
+    </div>
+  </div>
+</main>
+<script src="app.js" defer></script>
+</body>
+</html>
