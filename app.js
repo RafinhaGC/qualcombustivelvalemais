@@ -103,6 +103,28 @@ const MONTADORAS = {
       etanol:   null
     }
   },
+  "Caoa Chery": {
+    "chery_tiggo5x_15": {
+      nome: "Caoa Chery Tiggo 5X Pro 1.5 Turbo Flex (2022 a 2026)",
+      gasolina: { cidade: 10.9, estrada: 13.0 },
+      etanol:   { cidade: 7.6, estrada: 9.1 }
+    },
+    "chery_tiggo7_16": {
+      nome: "Caoa Chery Tiggo 7 Pro 1.6 TGDI Flex / Hybrid (2022 a 2026)",
+      gasolina: { cidade: 10.0, estrada: 12.0 },
+      etanol:   { cidade: 7.0, estrada: 8.5 }
+    },
+    "chery_arrizo6_15": {
+      nome: "Caoa Chery Arrizo 6 Pro 1.5 Turbo Flex (2021 a 2026)",
+      gasolina: { cidade: 11.0, estrada: 13.6 },
+      etanol:   { cidade: 7.6, estrada: 9.4 }
+    },
+    "chery_tiggo2_15": {
+      nome: "Caoa Chery Tiggo 2 1.5 16V Flex (2018 a 2021)",
+      gasolina: { cidade: 10.0, estrada: 11.5 },
+      etanol:   { cidade: 7.0, estrada: 8.0 }
+    }
+  },
   "Chevrolet (GM)": {
     "camaro_ss": {
       nome: "Chevrolet Camaro SS 6.2 V8 Gasolina (2010 a 2024)",
@@ -193,6 +215,56 @@ const MONTADORAS = {
       nome: "Chevrolet S10 2.5 Ecotec Flex (2014 a 2021)",
       gasolina: { cidade: 8.3, estrada: 9.5 },
       etanol:   { cidade: 5.6, estrada: 6.7 }
+    },
+    "s10_24_flex": {
+      nome: "Chevrolet S10 2.4 8V Flexpower (2007 a 2016)",
+      gasolina: { cidade: 7.5, estrada: 9.0 },
+      etanol:   { cidade: 5.0, estrada: 6.2 }
+    },
+    "astra_20_flex": {
+      nome: "Chevrolet Astra 2.0 8V Flexpower (2004 a 2011)",
+      gasolina: { cidade: 9.5, estrada: 12.5 },
+      etanol:   { cidade: 6.5, estrada: 8.6 }
+    },
+    "vectra_20_flex": {
+      nome: "Chevrolet Vectra 2.0 8V Flexpower (2005 a 2011)",
+      gasolina: { cidade: 9.0, estrada: 12.0 },
+      etanol:   { cidade: 6.2, estrada: 8.2 }
+    },
+    "zafira_20_flex": {
+      nome: "Chevrolet Zafira 2.0 8V Flexpower (2004 a 2012)",
+      gasolina: { cidade: 8.8, estrada: 11.5 },
+      etanol:   { cidade: 6.0, estrada: 7.8 }
+    },
+    "meriva_14_18_flex": {
+      nome: "Chevrolet Meriva 1.4 / 1.8 Flex (2003 a 2012)",
+      gasolina: { cidade: 10.2, estrada: 12.5 },
+      etanol:   { cidade: 7.0, estrada: 8.7 }
+    },
+    "agile_14_flex": {
+      nome: "Chevrolet Agile 1.4 8V Econoflex (2009 a 2014)",
+      gasolina: { cidade: 11.5, estrada: 13.5 },
+      etanol:   { cidade: 8.0, estrada: 9.5 }
+    },
+    "cruze_18_flex": {
+      nome: "Chevrolet Cruze 1.8 16V Ecotec Flex (2011 a 2016)",
+      gasolina: { cidade: 9.8, estrada: 12.5 },
+      etanol:   { cidade: 6.8, estrada: 8.7 }
+    },
+    "tracker_14_turbo_flex": {
+      nome: "Chevrolet Tracker 1.4 Turbo Flex (2017 a 2020)",
+      gasolina: { cidade: 10.6, estrada: 11.7 },
+      etanol:   { cidade: 7.3, estrada: 8.2 }
+    },
+    "montana_14_flex": {
+      nome: "Chevrolet Montana 1.4 Econoflex (2011 a 2021)",
+      gasolina: { cidade: 11.7, estrada: 13.4 },
+      etanol:   { cidade: 7.9, estrada: 9.2 }
+    },
+    "sonic_16_flex": {
+      nome: "Chevrolet Sonic 1.6 16V Flex (2012 a 2014)",
+      gasolina: { cidade: 10.5, estrada: 13.0 },
+      etanol:   { cidade: 7.2, estrada: 9.1 }
     }
   },
   "Chrysler": {
@@ -205,6 +277,38 @@ const MONTADORAS = {
       nome: "Chrysler 300C 5.7 V8 Hemi Gasolina (2005 a 2012)",
       gasolina: { cidade: 5.8, estrada: 9.2 },
       etanol:   null
+    }
+  },
+  "Citroën": {
+    "citroen_c3_10_firefly": {
+      nome: "Citroën C3 1.0 Firefly Live / Feel Flex (2022 a 2026)",
+      gasolina: { cidade: 12.9, estrada: 14.1 },
+      etanol:   { cidade: 9.3, estrada: 10.0 }
+    },
+    "citroen_c3_16": {
+      nome: "Citroën C3 1.6 16V VTi Flex (2012 a 2021)",
+      gasolina: { cidade: 11.0, estrada: 13.2 },
+      etanol:   { cidade: 7.5, estrada: 9.0 }
+    },
+    "citroen_c3_aircross_turbo": {
+      nome: "Citroën C3 Aircross 1.0 Turbo 200 Flex (2024 a 2026)",
+      gasolina: { cidade: 10.6, estrada: 12.0 },
+      etanol:   { cidade: 7.4, estrada: 8.6 }
+    },
+    "citroen_c4_cactus_16": {
+      nome: "Citroën C4 Cactus 1.6 16V Feel Flex (2018 a 2026)",
+      gasolina: { cidade: 11.2, estrada: 12.7 },
+      etanol:   { cidade: 7.7, estrada: 8.9 }
+    },
+    "citroen_c4_cactus_thp": {
+      nome: "Citroën C4 Cactus 1.6 THP Turbo Shine Flex (2018 a 2024)",
+      gasolina: { cidade: 11.7, estrada: 13.4 },
+      etanol:   { cidade: 8.2, estrada: 9.5 }
+    },
+    "citroen_aircross_16_g1": {
+      nome: "Citroën Aircross 1.6 16V Flex (2010 a 2020)",
+      gasolina: { cidade: 10.2, estrada: 12.0 },
+      etanol:   { cidade: 7.2, estrada: 8.4 }
     }
   },
   "DeLorean (DMC)": {
@@ -333,6 +437,41 @@ const MONTADORAS = {
       nome: "Fiat Toro 1.3 Turbo 270 Flex (2021 a 2026)",
       gasolina: { cidade: 10.4, estrada: 12.3 },
       etanol:   { cidade: 7.4, estrada: 8.7 }
+    },
+    "cronos_10_firefly": {
+      nome: "Fiat Cronos 1.0 Firefly Drive Flex (2022 a 2026)",
+      gasolina: { cidade: 13.8, estrada: 15.6 },
+      etanol:   { cidade: 9.9, estrada: 11.3 }
+    },
+    "grand_siena_14_16": {
+      nome: "Fiat Grand Siena 1.4 / 1.6 Flex (2012 a 2021)",
+      gasolina: { cidade: 11.2, estrada: 13.5 },
+      etanol:   { cidade: 7.7, estrada: 9.4 }
+    },
+    "punto_14_16_18": {
+      nome: "Fiat Punto 1.4 / 1.6 / 1.8 E.torQ Flex (2007 a 2017)",
+      gasolina: { cidade: 10.5, estrada: 12.8 },
+      etanol:   { cidade: 7.2, estrada: 8.8 }
+    },
+    "idea_14_18": {
+      nome: "Fiat Idea 1.4 / 1.8 Flex (2005 a 2016)",
+      gasolina: { cidade: 10.2, estrada: 12.2 },
+      etanol:   { cidade: 6.9, estrada: 8.4 }
+    },
+    "bravo_18": {
+      nome: "Fiat Bravo 1.8 16V E.torQ Flex (2010 a 2016)",
+      gasolina: { cidade: 9.8, estrada: 12.2 },
+      etanol:   { cidade: 6.8, estrada: 8.5 }
+    },
+    "doblo_18": {
+      nome: "Fiat Doblò 1.8 8V / 16V Flex (2006 a 2021)",
+      gasolina: { cidade: 9.3, estrada: 10.2 },
+      etanol:   { cidade: 6.4, estrada: 7.0 }
+    },
+    "fiorino_14_fire": {
+      nome: "Fiat Fiorino 1.4 Fire EVO Flex (2014 a 2026)",
+      gasolina: { cidade: 11.7, estrada: 12.4 },
+      etanol:   { cidade: 8.1, estrada: 8.8 }
     }
   },
   "Ford": {
@@ -402,6 +541,38 @@ const MONTADORAS = {
       etanol:   null
     }
   },
+  "Gurgel": {
+    "gurgel_br800": {
+      nome: "Gurgel BR-800 0.8 Enertron Gasolina (1988 a 1991)",
+      gasolina: { cidade: 13.0, estrada: 17.0 },
+      etanol:   null
+    },
+    "gurgel_supermini": {
+      nome: "Gurgel Supermini 0.8 Enertron Gasolina (1992 a 1995)",
+      gasolina: { cidade: 13.5, estrada: 17.5 },
+      etanol:   null
+    },
+    "gurgel_x12_tocantins": {
+      nome: "Gurgel X-12 / Tocantins 1.6 Boxer a Ar Gasolina (1975 a 1991)",
+      gasolina: { cidade: 8.2, estrada: 10.8 },
+      etanol:   null
+    },
+    "gurgel_carajas_18": {
+      nome: "Gurgel Carajás 1.8 AP Gasolina (1984 a 1991)",
+      gasolina: { cidade: 7.5, estrada: 10.5 },
+      etanol:   null
+    },
+    "gurgel_xef": {
+      nome: "Gurgel XEF 1.6 Boxer a Ar Gasolina (1983 a 1986)",
+      gasolina: { cidade: 8.5, estrada: 11.5 },
+      etanol:   null
+    },
+    "gurgel_motomachine": {
+      nome: "Gurgel Motomachine 0.8 Enertron Gasolina (1990 a 1992)",
+      gasolina: { cidade: 14.0, estrada: 18.0 },
+      etanol:   null
+    }
+  },
   "Honda": {
     "fit_15": {
       nome: "Honda Fit 1.5 i-VTEC Flex (2014 a 2021)",
@@ -447,6 +618,21 @@ const MONTADORAS = {
       nome: "Honda HR-V Touring 1.5 Turbo Flex (2022 a 2026)",
       gasolina: { cidade: 11.3, estrada: 12.6 },
       etanol:   { cidade: 7.9, estrada: 8.8 }
+    },
+    "civic_18_g8": {
+      nome: "Honda Civic 1.8 16V Flex (2006 a 2011)",
+      gasolina: { cidade: 10.0, estrada: 13.0 },
+      etanol:   { cidade: 6.8, estrada: 8.8 }
+    },
+    "crv_20_flex": {
+      nome: "Honda CR-V 2.0 16V Flex (2013 a 2016)",
+      gasolina: { cidade: 9.3, estrada: 11.2 },
+      etanol:   { cidade: 6.4, estrada: 7.7 }
+    },
+    "wrv_15_flex": {
+      nome: "Honda WR-V 1.5 16V Flex (2017 a 2021)",
+      gasolina: { cidade: 11.7, estrada: 12.4 },
+      etanol:   { cidade: 8.1, estrada: 8.8 }
     }
   },
   "Hyundai": {
@@ -454,6 +640,11 @@ const MONTADORAS = {
       nome: "Hyundai HB20 1.0 Comfort / Sense Flex (2012 a 2019)",
       gasolina: { cidade: 12.5, estrada: 14.1 },
       etanol:   { cidade: 8.5, estrada: 9.9 }
+    },
+    "hb20_16_flex": {
+      nome: "Hyundai HB20 1.6 16V Flex (2012 a 2021)",
+      gasolina: { cidade: 11.6, estrada: 13.8 },
+      etanol:   { cidade: 8.1, estrada: 9.6 }
     },
     "hb20_10_turbo_g2": {
       nome: "Hyundai HB20 1.0 TGDI Turbo Platinum Flex (2019 a 2026)",
@@ -479,6 +670,16 @@ const MONTADORAS = {
       nome: "Hyundai Creta 2.0 16V Ultimate Flex (2016 a 2024)",
       gasolina: { cidade: 10.9, estrada: 12.4 },
       etanol:   { cidade: 7.7, estrada: 8.7 }
+    },
+    "tucson_20_flex": {
+      nome: "Hyundai Tucson 2.0 16V Flex (2012 a 2018)",
+      gasolina: { cidade: 8.5, estrada: 10.5 },
+      etanol:   { cidade: 5.8, estrada: 7.2 }
+    },
+    "ix35_20_flex": {
+      nome: "Hyundai ix35 2.0 16V Flex (2012 a 2021)",
+      gasolina: { cidade: 9.2, estrada: 11.0 },
+      etanol:   { cidade: 6.4, estrada: 7.8 }
     }
   },
   "Jeep": {
@@ -577,6 +778,28 @@ const MONTADORAS = {
       etanol:   null
     }
   },
+  "MG (Morris Garages)": {
+    "mg_550_18t": {
+      nome: "MG 550 1.8 16V Turbo Gasolina (2011 a 2015)",
+      gasolina: { cidade: 7.4, estrada: 10.5 },
+      etanol:   null
+    },
+    "mg_6_18t": {
+      nome: "MG 6 1.8 16V Turbo Gasolina (2011 a 2015)",
+      gasolina: { cidade: 7.5, estrada: 10.8 },
+      etanol:   null
+    },
+    "mg_350_15": {
+      nome: "MG 350 1.5 16V Gasolina (2013 a 2015)",
+      gasolina: { cidade: 9.5, estrada: 12.5 },
+      etanol:   null
+    },
+    "mg_3_15": {
+      nome: "MG 3 1.5 16V Hatch Gasolina (2013 a 2015)",
+      gasolina: { cidade: 10.0, estrada: 13.0 },
+      etanol:   null
+    }
+  },
   "Mini": {
     "mini_cooper": {
       nome: "Mini Cooper 1.5 TwinPower Turbo Gasolina (2014 a 2024)",
@@ -591,6 +814,33 @@ const MONTADORAS = {
     "mini_countryman_s": {
       nome: "Mini Countryman Cooper S ALL4 2.0 Turbo Gasolina (2017 a 2024)",
       gasolina: { cidade: 10.5, estrada: 12.8 },
+      etanol:   null
+    }
+  },
+  "Mitsubishi": {
+    "mitsu_pajero_tr4_flex": {
+      nome: "Mitsubishi Pajero TR4 2.0 16V Flex (2007 a 2015)",
+      gasolina: { cidade: 8.0, estrada: 10.0 },
+      etanol:   { cidade: 5.5, estrada: 7.0 }
+    },
+    "mitsu_asx_20_flex": {
+      nome: "Mitsubishi ASX 2.0 16V Flex (2017 a 2021)",
+      gasolina: { cidade: 9.8, estrada: 12.3 },
+      etanol:   { cidade: 6.9, estrada: 8.6 }
+    },
+    "mitsu_lancer_20": {
+      nome: "Mitsubishi Lancer 2.0 16V Gasolina (2011 a 2019)",
+      gasolina: { cidade: 10.2, estrada: 13.1 },
+      etanol:   null
+    },
+    "mitsu_eclipse_cross": {
+      nome: "Mitsubishi Eclipse Cross 1.5 Turbo Gasolina (2019 a 2026)",
+      gasolina: { cidade: 10.9, estrada: 12.0 },
+      etanol:   null
+    },
+    "mitsu_outlander_20": {
+      nome: "Mitsubishi Outlander 2.0 16V Gasolina (2014 a 2022)",
+      gasolina: { cidade: 9.3, estrada: 11.5 },
       etanol:   null
     }
   },
@@ -624,6 +874,53 @@ const MONTADORAS = {
       nome: "Nissan Sentra 2.0 16V Advance / Exclusive Gasolina (2023 a 2026)",
       gasolina: { cidade: 11.0, estrada: 13.9 },
       etanol:   null
+    },
+    "sentra_20_flex": {
+      nome: "Nissan Sentra 2.0 16V Flex (2010 a 2013)",
+      gasolina: { cidade: 9.5, estrada: 12.5 },
+      etanol:   { cidade: 6.5, estrada: 8.7 }
+    },
+    "livina_16_18_flex": {
+      nome: "Nissan Livina / Grand Livina 1.6 / 1.8 16V Flex (2009 a 2014)",
+      gasolina: { cidade: 10.5, estrada: 13.2 },
+      etanol:   { cidade: 7.2, estrada: 9.0 }
+    }
+  },
+  "Peugeot": {
+    "peugeot_208_10": {
+      nome: "Peugeot 208 1.0 Firefly Like / Style Flex (2022 a 2026)",
+      gasolina: { cidade: 13.6, estrada: 15.5 },
+      etanol:   { cidade: 9.6, estrada: 11.0 }
+    },
+    "peugeot_208_turbo": {
+      nome: "Peugeot 208 1.0 Turbo 200 Flex (2023 a 2026)",
+      gasolina: { cidade: 12.0, estrada: 13.8 },
+      etanol:   { cidade: 8.3, estrada: 9.8 }
+    },
+    "peugeot_208_16": {
+      nome: "Peugeot 208 1.6 16V Flex (2013 a 2022)",
+      gasolina: { cidade: 11.0, estrada: 13.2 },
+      etanol:   { cidade: 7.5, estrada: 9.0 }
+    },
+    "peugeot_2008_turbo": {
+      nome: "Peugeot 2008 1.0 Turbo 200 Flex (2024 a 2026)",
+      gasolina: { cidade: 11.5, estrada: 12.8 },
+      etanol:   { cidade: 8.1, estrada: 9.2 }
+    },
+    "peugeot_2008_thp": {
+      nome: "Peugeot 2008 1.6 THP Turbo Griffe Flex (2015 a 2024)",
+      gasolina: { cidade: 11.2, estrada: 12.9 },
+      etanol:   { cidade: 7.8, estrada: 9.1 }
+    },
+    "peugeot_206_207_14": {
+      nome: "Peugeot 206 / 207 1.4 8V Flex (2006 a 2014)",
+      gasolina: { cidade: 10.8, estrada: 13.5 },
+      etanol:   { cidade: 7.6, estrada: 9.5 }
+    },
+    "peugeot_308_thp": {
+      nome: "Peugeot 308 1.6 THP Turbo Flex (2015 a 2019)",
+      gasolina: { cidade: 10.6, estrada: 12.9 },
+      etanol:   { cidade: 7.2, estrada: 8.9 }
     }
   },
   "Plymouth": {
@@ -665,6 +962,48 @@ const MONTADORAS = {
       etanol:   null
     }
   },
+  "Puma": {
+    "puma_gt_dkw": {
+      nome: "Puma GT DKW 1.0 3 cil 2T Gasolina (1967 a 1968)",
+      gasolina: { cidade: 8.0, estrada: 11.0 },
+      etanol:   null
+    },
+    "puma_gte_1600": {
+      nome: "Puma GTE Tubarão 1.6 Boxer a Ar Gasolina (1970 a 1980)",
+      gasolina: { cidade: 8.8, estrada: 12.4 },
+      etanol:   null
+    },
+    "puma_gts_conversivel": {
+      nome: "Puma GTS Conversível 1.6 Boxer a Ar Gasolina (1973 a 1980)",
+      gasolina: { cidade: 8.5, estrada: 12.0 },
+      etanol:   null
+    },
+    "puma_gtb_s1": {
+      nome: "Puma GTB S1 4.1 6 cil 250-S Gasolina (1974 a 1978)",
+      gasolina: { cidade: 5.0, estrada: 7.8 },
+      etanol:   null
+    },
+    "puma_gtb_s2": {
+      nome: "Puma GTB S2 4.1 6 cil 250-S Gasolina (1979 a 1987)",
+      gasolina: { cidade: 5.2, estrada: 8.0 },
+      etanol:   null
+    },
+    "puma_gti_1600": {
+      nome: "Puma GTI 1.6 Boxer a Ar Gasolina (1981 a 1987)",
+      gasolina: { cidade: 9.0, estrada: 12.6 },
+      etanol:   null
+    },
+    "puma_gtc_conversivel": {
+      nome: "Puma GTC Conversível 1.6 Boxer a Ar Gasolina (1981 a 1986)",
+      gasolina: { cidade: 8.8, estrada: 12.2 },
+      etanol:   null
+    },
+    "puma_am4_ap18": {
+      nome: "Puma AM4 1.8 AP Gasolina (1989 a 1993)",
+      gasolina: { cidade: 9.5, estrada: 13.5 },
+      etanol:   null
+    }
+  },
   "Renault": {
     "sandero_rs": {
       nome: "Renault Sandero R.S. 2.0 16V Flex (2015 a 2021)",
@@ -701,10 +1040,35 @@ const MONTADORAS = {
       gasolina: { cidade: 10.8, estrada: 11.5 },
       etanol:   { cidade: 7.7, estrada: 8.4 }
     },
+    "captur_16_13_tce": {
+      nome: "Renault Captur 1.6 SCe / 1.3 TCe Turbo Flex (2017 a 2023)",
+      gasolina: { cidade: 10.9, estrada: 11.8 },
+      etanol:   { cidade: 7.4, estrada: 8.2 }
+    },
     "kardian_10_tce": {
       nome: "Renault Kardian 1.0 TCe Turbo Premiere Flex (2024 a 2026)",
       gasolina: { cidade: 13.1, estrada: 13.9 },
       etanol:   { cidade: 9.0, estrada: 9.7 }
+    },
+    "oroch_16_13_flex": {
+      nome: "Renault Oroch 1.6 SCe / 1.3 Turbo Flex (2015 a 2026)",
+      gasolina: { cidade: 10.5, estrada: 11.4 },
+      etanol:   { cidade: 7.4, estrada: 8.0 }
+    },
+    "clio_10_flex": {
+      nome: "Renault Clio 1.0 16V Hi-Flex (2005 a 2016)",
+      gasolina: { cidade: 13.1, estrada: 14.3 },
+      etanol:   { cidade: 9.0, estrada: 10.0 }
+    },
+    "fluence_20_flex": {
+      nome: "Renault Fluence 2.0 16V Hi-Flex (2011 a 2018)",
+      gasolina: { cidade: 9.6, estrada: 12.1 },
+      etanol:   { cidade: 6.6, estrada: 8.4 }
+    },
+    "megane_16_flex": {
+      nome: "Renault Mégane 1.6 16V Hi-Flex (2006 a 2012)",
+      gasolina: { cidade: 10.0, estrada: 12.5 },
+      etanol:   { cidade: 6.8, estrada: 8.7 }
     }
   },
   "Suzuki": {
@@ -764,6 +1128,16 @@ const MONTADORAS = {
       nome: "Toyota Hilux 2.7 Dual VVT-i Flex (2016 a 2021)",
       gasolina: { cidade: 6.9, estrada: 8.1 },
       etanol:   { cidade: 4.8, estrada: 5.6 }
+    },
+    "sw4_27_flex": {
+      nome: "Toyota SW4 2.7 Dual VVT-i Flex (2016 a 2021)",
+      gasolina: { cidade: 6.8, estrada: 8.1 },
+      etanol:   { cidade: 4.8, estrada: 5.6 }
+    },
+    "fielder_18_flex": {
+      nome: "Toyota Fielder 1.8 16V Flex (2007 a 2008)",
+      gasolina: { cidade: 11.0, estrada: 13.0 },
+      etanol:   { cidade: 7.5, estrada: 9.0 }
     }
   },
   "Volkswagen (VW)": {
@@ -893,9 +1267,34 @@ const MONTADORAS = {
       etanol:   { cidade: 7.4, estrada: 9.0 }
     },
     "saveiro_16": {
-      nome: "VW Saveiro 1.6 MSI Flex (2014 a 2024)",
+      nome: "VW Saveiro 1.6 MSI Flex (2014 a 2026)",
       gasolina: { cidade: 11.5, estrada: 12.9 },
       etanol:   { cidade: 7.9, estrada: 9.1 }
+    },
+    "kombi_14_flex": {
+      nome: "VW Kombi 1.4 Total Flex (2006 a 2013)",
+      gasolina: { cidade: 8.8, estrada: 9.5 },
+      etanol:   { cidade: 6.0, estrada: 6.7 }
+    },
+    "parati_16_flex": {
+      nome: "VW Parati 1.6 Total Flex G3/G4 (2003 a 2012)",
+      gasolina: { cidade: 10.8, estrada: 13.2 },
+      etanol:   { cidade: 7.5, estrada: 9.2 }
+    },
+    "spacefox_16_flex": {
+      nome: "VW SpaceFox / CrossFox 1.6 Total Flex (2006 a 2019)",
+      gasolina: { cidade: 10.4, estrada: 12.8 },
+      etanol:   { cidade: 7.2, estrada: 8.8 }
+    },
+    "santana_18_flex": {
+      nome: "VW Santana 1.8 Total Flex (2005 a 2006)",
+      gasolina: { cidade: 9.8, estrada: 13.0 },
+      etanol:   { cidade: 6.8, estrada: 9.0 }
+    },
+    "bora_20_flex": {
+      nome: "VW Bora 2.0 Total Flex (2008 a 2011)",
+      gasolina: { cidade: 9.5, estrada: 12.5 },
+      etanol:   { cidade: 6.5, estrada: 8.6 }
     }
   },
   "Volvo": {
@@ -1118,18 +1517,35 @@ Object.keys(EFICIENCIA.premium.marcas).forEach(m =>
 
 const carroSel = $("carro");
 const buscaCarroInput = $("buscaCarro");
+const toggleVeiculoFlexEl = $("toggleVeiculoFlex");
+const toggleFlexDescEl = $("toggleFlexDesc");
+const carroLabelEl = $("carroLabel");
 
 function popularSeletorCarros(filtroTexto = "") {
+  const modoFlex = toggleVeiculoFlexEl ? toggleVeiculoFlexEl.checked : true;
   const valorAtual = carroSel.value || "focus_do_rafa";
   carroSel.replaceChildren();
+
+  if (carroLabelEl) {
+    carroLabelEl.textContent = modoFlex ? "Veículo Flex e Versão" : "Veículo a Gasolina e Versão";
+  }
+  if (toggleFlexDescEl) {
+    toggleFlexDescEl.textContent = modoFlex
+      ? "Ativado: listando apenas carros flex (Etanol/Gasolina). Desative para ver carros exclusivamente a Gasolina"
+      : "Desativado: listando veículos exclusivamente a Gasolina (não aceitam etanol)";
+  }
 
   const termo = removerAcentos(filtroTexto.trim());
   let primeiroEncontrado = null;
   let valorAtualAindaExiste = false;
 
-  // 1. Topo: Destaque Especial (Focus do Rafa e Informar consumo oficial do meu carro na mesma categoria)
+  // 1. Topo: Destaque Especial
+  const nomeRafa = modoFlex
+    ? CARRO_DESTAQUE.focus_do_rafa.nome
+    : "⭐ Focus do Rafa (Gasolina: 7 km/L cid / 16 km/L est)";
+
   const itensDestaque = [
-    ["focus_do_rafa", CARRO_DESTAQUE.focus_do_rafa.nome],
+    ["focus_do_rafa", nomeRafa],
     [CARRO_PERSONALIZADO, "Informar consumo oficial do meu carro"]
   ].filter(([chave, nome]) => {
     if (!termo) return true;
@@ -1138,7 +1554,7 @@ function popularSeletorCarros(filtroTexto = "") {
 
   if (itensDestaque.length > 0) {
     const optgroupDestaque = document.createElement("optgroup");
-    optgroupDestaque.label = "⭐ Destaque Especial";
+    optgroupDestaque.label = modoFlex ? "⭐ Destaque Especial (Flex)" : "⭐ Destaque Especial (Gasolina)";
     for (const [chave, nome] of itensDestaque) {
       const opt = document.createElement("option");
       opt.value = chave;
@@ -1150,11 +1566,16 @@ function popularSeletorCarros(filtroTexto = "") {
     carroSel.appendChild(optgroupDestaque);
   }
 
-  // 2. Montadoras em estrita ordem alfabética
+  // 2. Montadoras em estrita ordem alfabética com separação Flex vs Gasolina
   const montadorasOrdenadas = Object.keys(MONTADORAS).sort((a, b) => a.localeCompare(b, "pt-BR"));
 
   for (const montadora of montadorasOrdenadas) {
     const carrosDaMontadora = Object.entries(MONTADORAS[montadora]).filter(([, carro]) => {
+      // Separação estrita: Modo Flex só lista flex; Modo Gasolina só lista exclusivamente a gasolina
+      const ehFlex = carro.etanol !== null;
+      if (modoFlex && !ehFlex) return false;
+      if (!modoFlex && ehFlex) return false;
+
       if (!termo) return true;
       return removerAcentos(carro.nome).includes(termo) || removerAcentos(montadora).includes(termo);
     });
@@ -1175,10 +1596,10 @@ function popularSeletorCarros(filtroTexto = "") {
   }
 
   // 3. Grupo Padrões Médios de Mercado
-  const opcoesGerais = [
-    [CARRO_GENERICO, CARROS_MAP[CARRO_GENERICO].nome],
-    [CARRO_GASOLINA_GENERICO, CARROS_MAP[CARRO_GASOLINA_GENERICO].nome]
-  ].filter(([chave, nome]) => {
+  const opcoesGerais = (modoFlex
+    ? [[CARRO_GENERICO, CARROS_MAP[CARRO_GENERICO].nome]]
+    : [[CARRO_GASOLINA_GENERICO, CARROS_MAP[CARRO_GASOLINA_GENERICO].nome]]
+  ).filter(([chave, nome]) => {
     if (!termo) return true;
     return removerAcentos(nome).includes(termo);
   });
@@ -1201,12 +1622,13 @@ function popularSeletorCarros(filtroTexto = "") {
   if (!primeiroEncontrado) {
     const optVazio = document.createElement("option");
     optVazio.value = "";
-    optVazio.textContent = "Nenhum veículo encontrado para a busca";
+    optVazio.textContent = modoFlex
+      ? "Nenhum veículo flex encontrado (desative o toggle flex para ver carros a gasolina)"
+      : "Nenhum veículo a gasolina encontrado";
     optVazio.disabled = true;
     optVazio.selected = true;
     carroSel.appendChild(optVazio);
   } else {
-    // Mantém o valor anterior se ele continuar visível; caso contrário, seleciona o primeiro filtrado
     carroSel.value = valorAtualAindaExiste ? valorAtual : primeiroEncontrado;
   }
 }
@@ -1229,6 +1651,7 @@ const litrosMisturaEl = $("litrosMistura");
 // Identifica se o veículo atual suporta etanol
 function etanolAtivo() {
   if (toggleDieselEl.checked) return false;
+  if (toggleVeiculoFlexEl && !toggleVeiculoFlexEl.checked) return false;
   const escolha = carroSel.value;
   if (escolha === CARRO_PERSONALIZADO) {
     return toggleEtanolEl.checked;
@@ -1579,17 +2002,26 @@ function atualizarTabela() {
   tabela.replaceChildren(...linhas);
 }
 
+function atualizarTitulo(emoji, texto) {
+  const emojiEl = $("titleEmoji");
+  const textEl = $("titleText");
+  const titleEl = $("mainTitle") || document.querySelector("h1");
+  if (emojiEl && textEl) {
+    emojiEl.textContent = emoji;
+    textEl.textContent = texto;
+  } else if (titleEl) {
+    titleEl.textContent = emoji + " " + texto;
+  }
+  document.title = texto + " – Calculadora";
+}
+
 function atualizarCampos() {
   const isDiesel = toggleDieselEl.checked;
-  const titleEl = $("mainTitle") || document.querySelector("h1");
 
   if (isDiesel) {
     $("mainContent").hidden = true;
     $("dieselMessage").hidden = false;
-    if (titleEl) {
-      titleEl.textContent = "🚛 Veículo com Motor a Diesel";
-      document.title = "Veículo a Diesel - Alerta Técnico";
-    }
+    atualizarTitulo("🚛", "Veículo com Motor a Diesel");
     return;
   } else {
     $("mainContent").hidden = false;
@@ -1599,15 +2031,11 @@ function atualizarCampos() {
   const custom = carroSel.value === CARRO_PERSONALIZADO;
   const comEtanol = etanolAtivo();
 
-  // Título dinâmico da página adaptativo
-  if (titleEl) {
-    if (!comEtanol) {
-      titleEl.textContent = "⛽ Comum, aditivada ou premium?";
-      document.title = "Comum, aditivada ou premium? Calculadora";
-    } else {
-      titleEl.textContent = "⛽ Etanol ou Gasolina?";
-      document.title = "Etanol ou Gasolina? Calculadora";
-    }
+  // Título dinâmico da página adaptativo com cores originais dos emojis
+  if (!comEtanol) {
+    atualizarTitulo("⛽", "Comum, aditivada ou premium?");
+  } else {
+    atualizarTitulo("⛽", "Etanol ou Gasolina?");
   }
 
   $("brandField").hidden = parseNumero($("premium").value) === null;
@@ -1638,6 +2066,19 @@ $("form").addEventListener("input", e => {
     atualizarModoRachador();
     return;
   }
+  esconderResultado();
+  atualizarCampos();
+});
+
+toggleVeiculoFlexEl.addEventListener("change", () => {
+  const modoFlex = toggleVeiculoFlexEl.checked;
+  const carroAtual = CARROS_MAP[carroSel.value];
+  if (modoFlex && carroAtual && carroAtual.etanol === null && carroSel.value !== CARRO_PERSONALIZADO) {
+    carroSel.value = "focus_do_rafa";
+  } else if (!modoFlex && carroAtual && carroAtual.etanol !== null && carroSel.value !== CARRO_PERSONALIZADO && carroSel.value !== "focus_do_rafa") {
+    carroSel.value = "focus_do_rafa";
+  }
+  popularSeletorCarros(buscaCarroInput.value);
   esconderResultado();
   atualizarCampos();
 });
