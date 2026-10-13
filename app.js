@@ -1363,7 +1363,7 @@ CARROS_MAP[CARRO_GENERICO] = {
 };
 
 CARROS_MAP[CARRO_GASOLINA_GENERICO] = {
-  nome: "Carro a gasolina genérico (apenas gasolina)",
+  nome: "Carro a gasolina genérico",
   gasolina: { cidade: 10.0, estrada: 13.5 },
   etanol:   null
 };
@@ -1539,13 +1539,9 @@ function popularSeletorCarros(filtroTexto = "") {
   let primeiroEncontrado = null;
   let valorAtualAindaExiste = false;
 
-  // 1. Topo: Destaque Especial
-  const nomeRafa = modoFlex
-    ? CARRO_DESTAQUE.focus_do_rafa.nome
-    : "⭐ Focus do Rafa (Gasolina: 7 km/L cid / 16 km/L est)";
-
+  // 1. Topo: Destaque Especial (Apresentação uniforme em ambos os modos)
   const itensDestaque = [
-    ["focus_do_rafa", nomeRafa],
+    ["focus_do_rafa", CARRO_DESTAQUE.focus_do_rafa.nome],
     [CARRO_PERSONALIZADO, "Informar consumo oficial do meu carro"]
   ].filter(([chave, nome]) => {
     if (!termo) return true;
@@ -1554,7 +1550,7 @@ function popularSeletorCarros(filtroTexto = "") {
 
   if (itensDestaque.length > 0) {
     const optgroupDestaque = document.createElement("optgroup");
-    optgroupDestaque.label = modoFlex ? "⭐ Destaque Especial (Flex)" : "⭐ Destaque Especial (Gasolina)";
+    optgroupDestaque.label = "⭐ Destaque Especial";
     for (const [chave, nome] of itensDestaque) {
       const opt = document.createElement("option");
       opt.value = chave;
@@ -2021,7 +2017,7 @@ function atualizarCampos() {
   if (isDiesel) {
     $("mainContent").hidden = true;
     $("dieselMessage").hidden = false;
-    atualizarTitulo("🚛", "Veículo com Motor a Diesel");
+    atualizarTitulo("🚛", "Combustível Incompatível com a Calculadora");
     return;
   } else {
     $("mainContent").hidden = false;

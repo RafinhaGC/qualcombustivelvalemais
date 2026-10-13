@@ -18,26 +18,39 @@
   <h1 id="mainTitle"><span id="titleEmoji" class="title-emoji" aria-hidden="true">⛽</span> <span id="titleText" class="title-text">Etanol ou Gasolina?</span></h1>
   <p class="sub">Informe o preço dos combustíveis e escolha o veículo. O app calcula o rendimento e custo real por quilômetro.</p>
 
-  <!-- Toggle Diesel -->
-  <div class="toggle-card diesel-toggle-card">
-    <div class="toggle-info">
-      <label for="toggleDiesel" class="toggle-title">Meu veículo é a diesel</label>
-      <span class="toggle-desc">Ative caso seu veículo utilize óleo diesel (S10 / S500)</span>
+  <!-- Toggles no Topo: Diesel e Veículo Flex lado a lado -->
+  <div class="top-toggles-grid">
+    <div class="toggle-card diesel-toggle-card">
+      <div class="toggle-info">
+        <label for="toggleDiesel" class="toggle-title">🚛 Veículo a diesel?</label>
+        <span class="toggle-desc">Ative caso utilize óleo diesel (S10 / S500)</span>
+      </div>
+      <label class="switch" for="toggleDiesel" title="Veículo a diesel">
+        <input type="checkbox" id="toggleDiesel">
+        <span class="slider"></span>
+      </label>
     </div>
-    <label class="switch" for="toggleDiesel" title="Veículo a diesel">
-      <input type="checkbox" id="toggleDiesel">
-      <span class="slider"></span>
-    </label>
+
+    <div class="toggle-card flex-toggle-card">
+      <div class="toggle-info">
+        <label for="toggleVeiculoFlex" class="toggle-title">🌱 Veículo flex?</label>
+        <span class="toggle-desc" id="toggleFlexDesc">Desative para ver apenas carros a gasolina</span>
+      </div>
+      <label class="switch" for="toggleVeiculoFlex" title="Alternar entre lista de carros Flex e exclusivamente a Gasolina">
+        <input type="checkbox" id="toggleVeiculoFlex" checked>
+        <span class="slider"></span>
+      </label>
+    </div>
   </div>
 
-  <!-- Mensagem exclusiva para Diesel -->
+  <!-- Mensagem de combustível incompatível (Diesel) -->
   <div id="dieselMessage" class="card diesel-card" hidden>
-    <div class="diesel-badge">⚠️ MOTOR A DIESEL DETECTADO</div>
-    <h2>Incompatibilidade Técnica: Motores a Diesel Não Utilizam Gasolina nem Etanol</h2>
+    <div class="diesel-badge">⚠️ COMBUSTÍVEL INCOMPATÍVEL COM A CALCULADORA</div>
+    <h2>Combustível Incompatível com a Calculadora</h2>
     <p class="diesel-desc">
-      Motores a diesel operam por <b>ignição espontânea por alta compressão</b> e necessitam da lubricidade específica do óleo diesel (S10 ou S500).
+      Veículos movidos a <b>óleo diesel (S10 ou S500)</b> operam por <b>ignição espontânea por alta compressão</b> e necessitam da lubricidade específica do óleo diesel.
       <br><br>
-      <b>Nunca abasteça seu veículo a diesel com gasolina ou etanol</b>: a ignição descontrolada e a ausência de lubrificação destroem a bomba injetora de alta pressão, os bicos e o conjunto móvel do motor em poucos quilômetros.
+      <b>Motores a diesel não utilizam gasolina nem etanol</b>: abastecer com etanol ou gasolina causa destruição imediata da bomba injetora de alta pressão, dos bicos e de componentes móveis do motor. Por isso, a equivalência de combustíveis não se aplica a veículos a diesel.
     </p>
   </div>
 
@@ -63,19 +76,6 @@
       <div class="field" id="brandField" hidden>
         <label for="brand">Marca da gasolina premium</label>
         <select id="brand"></select>
-      </div>
-
-      <div class="field">
-        <div class="toggle-card flex-toggle-card">
-          <div class="toggle-info">
-            <label for="toggleVeiculoFlex" class="toggle-title">🌱 Veículo com motor Flex?</label>
-            <span class="toggle-desc" id="toggleFlexDesc">Ativado: lista apenas carros flex (Etanol/Gasolina). Desative para ver carros exclusivamente a Gasolina</span>
-          </div>
-          <label class="switch" for="toggleVeiculoFlex" title="Filtrar veículos Flex ou exclusivamente a Gasolina">
-            <input type="checkbox" id="toggleVeiculoFlex" checked>
-            <span class="slider"></span>
-          </label>
-        </div>
       </div>
 
       <div class="field">

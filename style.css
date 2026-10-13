@@ -198,6 +198,27 @@ select option {
 .grid2 .price span { font-size: .85rem; }
 
 /* Toggles elegantes no estilo Mercedes F1 */
+.top-toggles-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.top-toggles-grid .toggle-card {
+  margin-top: 0;
+  margin-bottom: 0;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+@media (max-width: 500px) {
+  .top-toggles-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+}
+
 .toggle-card {
   display: flex;
   align-items: center;
