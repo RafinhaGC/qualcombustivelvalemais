@@ -1,0 +1,93 @@
+:root{
+  --bg:#0f172a; --card:#1e293b; --card2:#273449; --text:#f1f5f9; --muted:#cbd5e1;
+  --accent:#22c55e; --accent2:#16a34a; --danger:#fca5a5; --warning:#f59e0b; --border:#475569;
+}
+*{box-sizing:border-box}
+[hidden]{display:none !important}
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex;justify-content:center;padding:20px 14px 40px;line-height:1.45}
+main{width:100%;max-width:520px}
+h1{font-size:1.5rem;margin:0 0 4px}
+.sub{color:var(--muted);margin:0 0 16px;font-size:.95rem}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:18px;margin-bottom:16px}
+.field{margin-bottom:14px;border:0;padding:0;min-width:0}
+.field:last-child{margin-bottom:0}
+label,legend{display:block;font-size:.9rem;color:var(--muted);margin-bottom:6px;padding:0}
+.price{display:flex;align-items:center;background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0 12px}
+.price:focus-within,select:focus{border-color:var(--accent);outline:2px solid var(--accent);outline-offset:1px}
+.price span{color:var(--muted);margin-right:6px}
+input,select{width:100%;background:transparent;border:0;color:var(--text);font-size:1.1rem;padding:12px 0;outline:none;font-family:inherit}
+input::placeholder{color:#94a3b8;opacity:1}
+select{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:12px;font-size:1rem}
+select option{background:var(--card)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.grid2 label{font-size:.85rem}
+.grid2 .price{padding:0 10px}
+.grid2 .price span{font-size:.85rem}
+.toggle-card{display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:12px 14px;margin-top:10px;margin-bottom:12px}
+.toggle-info{flex:1;min-width:0}
+.toggle-title{display:block;font-size:.95rem;font-weight:600;color:var(--text);margin-bottom:2px;cursor:pointer}
+.toggle-desc{display:block;font-size:.8rem;color:var(--muted);line-height:1.3}
+.switch{position:relative;display:inline-block;width:48px;height:28px;flex-shrink:0;cursor:pointer}
+.switch input{opacity:0;width:0;height:0;position:absolute}
+.slider{position:absolute;top:0;left:0;right:0;bottom:0;background-color:var(--bg);border:1px solid var(--border);border-radius:28px;transition:background-color .2s,border-color .2s}
+.slider::before{content:"";position:absolute;height:20px;width:20px;left:3px;top:3px;background-color:var(--muted);border-radius:50%;transition:transform .2s,background-color .2s}
+.switch input:checked + .slider{background-color:var(--accent);border-color:var(--accent)}
+.switch input:checked + .slider::before{transform:translateX(20px);background-color:#052e16}
+.switch input:focus-visible + .slider{outline:2px solid var(--text);outline-offset:2px}
+button{width:100%;border:0;border-radius:12px;padding:14px;font-size:1.05rem;font-weight:600;background:var(--accent);color:#052e16;cursor:pointer}
+button:hover{background:var(--accent2)}
+button:focus-visible{outline:3px solid var(--text);outline-offset:2px}
+.error{color:var(--danger);font-size:.95rem;margin-top:10px}
+.winner{background:linear-gradient(135deg,#14532d,#166534);border:1px solid var(--accent);border-radius:14px;padding:16px;margin-bottom:14px}
+.winner small{color:#dcfce7;text-transform:uppercase;letter-spacing:.06em;font-size:.8rem}
+.winner h2{margin:4px 0 4px;font-size:1.5rem}
+.winner p{margin:0;color:#f0fdf4;font-size:.95rem}
+.row{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px;border-radius:10px;background:var(--card2);margin-bottom:8px}
+.row.best{outline:1px solid var(--accent)}
+.row .name{font-weight:600}
+.row .meta{color:var(--muted);font-size:.875rem}
+.row .val{text-align:right;font-weight:700;white-space:nowrap}
+.row .val small{display:block;color:var(--muted);font-weight:400;font-size:.85rem}
+.tip{background:var(--card2);border-radius:10px;padding:12px;font-size:.9rem;color:var(--muted);margin-top:12px;line-height:1.45}
+.tip b{color:var(--text)}
+.tip.warning{border-left:4px solid var(--warning);background:rgba(245,158,11,.08)}
+.tip.alert{border-left:4px solid var(--danger);background:rgba(239,68,68,.08)}
+details{margin-top:4px}
+summary{cursor:pointer;color:var(--muted);font-size:.95rem}
+summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+table{width:100%;border-collapse:collapse;margin-top:10px;font-size:.875rem}
+td,th{text-align:left;padding:6px 4px;border-bottom:1px solid var(--border)}
+th{color:var(--muted);font-weight:600}
+.note{color:var(--muted);font-size:.875rem;margin-top:10px;line-height:1.5}
+.benefits{background:var(--card2);border-radius:12px;padding:14px;margin-top:12px}
+.benefits h3{margin:0 0 8px;font-size:1rem}
+.benefits ul{margin:0;padding-left:18px;font-size:.9rem;line-height:1.5}
+.benefits li{margin-bottom:4px}
+.seg{display:flex;gap:6px}
+.seg label{flex:1;margin:0;cursor:pointer;position:relative}
+.seg input{position:absolute;opacity:0;width:0;height:0}
+.seg span{display:block;text-align:center;padding:10px 4px;border:1px solid var(--border);border-radius:10px;background:var(--bg);color:var(--text);font-size:.9rem}
+.seg input:checked + span{background:var(--accent);color:#052e16;border-color:var(--accent);font-weight:600}
+.seg input:focus-visible + span{outline:2px solid var(--text);outline-offset:2px}
+
+/* Estilos Diesel */
+.diesel-toggle-card{border-color:#b45309;background:rgba(180,83,9,.12)}
+.diesel-card{text-align:center;padding:28px 20px;border-color:#d97706;background:linear-gradient(180deg,#1e293b 0%,#2d1b09 100%)}
+.diesel-badge{display:inline-block;padding:4px 10px;border-radius:20px;font-size:.75rem;font-weight:700;letter-spacing:.08em;background:#f59e0b;color:#451a03;margin-bottom:12px}
+.diesel-card h2{font-size:1.35rem;margin:0 0 12px;color:#fef3c7}
+.diesel-desc{color:var(--muted);font-size:.95rem;line-height:1.5;margin:0}
+
+/* Estilos Modo Rachador */
+.rachador-toggle-card{border-color:#38bdf8;background:rgba(56,189,248,.08)}
+.rachador-content{background:var(--card2);border:1px solid #38bdf8;border-radius:12px;padding:14px;margin-top:8px}
+.rachador-input-wrap{margin-bottom:12px}
+.rachador-result-cards{display:flex;flex-direction:column;gap:10px}
+.rachador-card{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:12px}
+.rachador-card.comum{border-left:4px solid var(--accent)}
+.rachador-card.premium{border-left:4px solid #a855f7}
+.rachador-title{font-size:1rem;font-weight:700;margin:0 0 6px;color:var(--text)}
+.rachador-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:.875rem}
+.rachador-metric{background:var(--card);padding:8px 10px;border-radius:8px}
+.rachador-metric b{display:block;font-size:1.05rem;color:#38bdf8}
+.rachador-metric small{color:var(--muted);font-size:.75rem}
+.rachador-footer{margin-top:8px;font-size:.85rem;color:var(--muted);display:flex;justify-content:space-between;border-top:1px solid var(--border);padding-top:6px}

@@ -1,0 +1,39 @@
+COMO COLOCAR O APP NO AR (grátis) E USAR FORA DE CASA
+=====================================================
+
+Este ZIP contém o site completo (index.html + arquivos de instalação no celular).
+Qualquer opção abaixo gera um link público (https) que você abre no celular.
+
+OPÇÃO 1 - Netlify Drop (mais fácil, sem cadastro obrigatório)
+  1. Acesse https://app.netlify.com/drop
+  2. Descompacte o ZIP e ARRASTE A PASTA (ou o próprio ZIP) para a página.
+  3. Em segundos você recebe um link tipo https://nome-aleatorio.netlify.app
+  4. (Opcional) Crie uma conta grátis para manter o site e trocar o nome do link.
+
+OPÇÃO 2 - GitHub Pages
+  1. Crie um repositório público no GitHub.
+  2. Envie os arquivos do ZIP para a raiz do repositório (Add file > Upload files).
+  3. Settings > Pages > Source: "Deploy from a branch" > branch main > / (root) > Save.
+  4. O link será https://SEU-USUARIO.github.io/NOME-DO-REPOSITORIO/
+
+OPÇÃO 3 - Cloudflare Pages / Vercel
+  Crie um projeto novo e envie a pasta (upload direto), sem comando de build.
+
+INSTALAR NO CELULAR (vira um ícone, funciona até sem internet)
+  - Android (Chrome): abra o link > menu ⋮ > "Instalar app" / "Adicionar à tela inicial".
+  - iPhone (Safari): abra o link > botão Compartilhar > "Adicionar à Tela de Início".
+
+NOVIDADES DESTA VERSÃO (v6):
+  - Métrica de "Carro a gasolina genérico" adicionada aos veículos pré-cadastrados.
+  - Toggle dedicado para veículos a Diesel (exibe mensagem de alerta e oculta comparativo indevido).
+  - Modo Rachador: Calculadora de Mistura "Carioca" 50/50 (disponível apenas para motores Flex), considerando o teor exato de etanol na gasolina (32% na comum e 25% na premium).
+  - Teor de etanol corrigido: 32% para gasolina comum/aditivada e 25% para gasolina premium.
+  - Alerta técnico sobre Gasolina Aditivada (ausência de regulamentação de proporção pela ANP, recomendando gasolina comum + aditivo avulso ou combustível premium).
+  - Disclaimer sobre a saúde do motor em viagens curtas (<15 min) e o etanol como fator agravante.
+
+ATUALIZAR O APP DEPOIS
+  Edite o app.js (ex.: os dados na constante CARROS/EFICIENCIA) e envie de novo.
+  Se o celular mostrar a versão antiga, aumente o número em "combustivel-v7" (ex.: v7) no sw.js.
+
+SEGURANÇA (arquivo _headers)
+  O arquivo _headers aplica CSP, X-Frame-Options, nosniff, Referrer-Policy e Permissions-Policy automaticamente no Netlify.
