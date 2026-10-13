@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#0f172a">
+<meta name="theme-color" content="#090d12">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/png" href="icon-192.png">
@@ -22,7 +22,7 @@
   <div class="toggle-card diesel-toggle-card">
     <div class="toggle-info">
       <label for="toggleDiesel" class="toggle-title">Meu veículo é a diesel</label>
-      <span class="toggle-desc">Ative caso seu veículo utilize óleo diesel</span>
+      <span class="toggle-desc">Ative caso seu veículo utilize óleo diesel (S10 / S500)</span>
     </div>
     <label class="switch" for="toggleDiesel" title="Veículo a diesel">
       <input type="checkbox" id="toggleDiesel">
@@ -32,11 +32,12 @@
 
   <!-- Mensagem exclusiva para Diesel -->
   <div id="dieselMessage" class="card diesel-card" hidden>
-    <div class="diesel-badge">⚠️ VEÍCULO A DIESEL</div>
-    <h2>Por que você quer comparar gasolina e etanol sendo que seu carro é diesel? 🤨</h2>
+    <div class="diesel-badge">⚠️ MOTOR A DIESEL DETECTADO</div>
+    <h2>Incompatibilidade Técnica: Motores a Diesel Não Utilizam Gasolina nem Etanol</h2>
     <p class="diesel-desc">
-      Motores a diesel funcionam por ignição por compressão e exigem exclusivamente óleo diesel (S10 ou S500).
-      <b>Nunca abasteça seu veículo a diesel com gasolina ou etanol</b>, pois isso causa danos catastróficos à bomba de alta pressão, bicos injetores e componentes internos do motor!
+      Motores a diesel operam por <b>ignição espontânea por alta compressão</b> e necessitam da lubricidade específica do óleo diesel (S10 ou S500).
+      <br><br>
+      <b>Nunca abasteça seu veículo a diesel com gasolina ou etanol</b>: a ignição descontrolada e a ausência de lubrificação destroem a bomba injetora de alta pressão, os bicos e o conjunto móvel do motor em poucos quilômetros.
     </p>
   </div>
 
@@ -65,7 +66,7 @@
       </div>
 
       <div class="field">
-        <label for="carro">Veículo</label>
+        <label for="carro">Veículo e Versão</label>
         <select id="carro"></select>
         <div id="carroCustom" hidden>
           <div class="toggle-card">
@@ -89,14 +90,14 @@
         </div>
       </div>
 
-      <!-- Rabo de Galo (E50) -->
+      <!-- Rabo de Galo (Mistura 50/50) com emoji de drink -->
       <div id="rachadorSection" class="field">
         <div class="toggle-card rachador-toggle-card">
           <div class="toggle-info">
-            <label for="toggleRachador" class="toggle-title">🏁 Rabo de Galo (50/50)</label>
-            <span class="toggle-desc">Calcula litros de etanol e gasolina para atingir uma mistura 50-50 de etanol e gasolina</span>
+            <label for="toggleRachador" class="toggle-title">🍸 Rabo de Galo (Mistura 50/50)</label>
+            <span class="toggle-desc">Calcula litros exatos de etanol e gasolina para atingir 50% de etanol e 50% de gasolina pura no tanque</span>
           </div>
-          <label class="switch" for="toggleRachador" title="Ativar Rabo de Galo">
+          <label class="switch" for="toggleRachador" title="Ativar cálculo de Rabo de Galo">
             <input type="checkbox" id="toggleRachador">
             <span class="slider"></span>
           </label>
@@ -104,9 +105,9 @@
 
         <div id="rachadorBox" class="rachador-content" hidden>
           <div class="rachador-input-wrap">
-            <label for="litrosCarioca">Volume total desejado da mistura (Litros):</label>
+            <label for="litrosMistura">Volume total desejado da mistura (Litros):</label>
             <div class="price">
-              <input id="litrosCarioca" type="text" inputmode="numeric" placeholder="40" value="40" maxlength="3">
+              <input id="litrosMistura" type="text" inputmode="numeric" placeholder="40" value="40" maxlength="3">
               <span>L</span>
             </div>
           </div>
@@ -133,17 +134,17 @@
         <summary>Como o app calcula / rendimentos usados</summary>
         <table id="effTable"></table>
         <p class="note">
-          O custo por km é <b>preço ÷ km/L</b>: quanto menor, melhor. A tabela acima mostra o veículo selecionado.
+          O custo por km é <b>preço ÷ km/L</b>: quanto menor, melhor. A tabela acima exibe o consumo oficial do veículo selecionado (tabela Inmetro / PBEV).
           Percurso misto = 50% da distância na cidade e 50% na estrada.
         </p>
         <p class="note">
           <b>Teor oficial de etanol na gasolina:</b> A gasolina comum e a aditivada contêm <b>32% de etanol anidro</b> por regulamentação, enquanto as gasolinas premium contêm <b>25% de etanol anidro</b>.
         </p>
         <p class="note">
-          <b>⚠️ Alerta sobre Gasolina Aditivada:</b> Não existe uma regulamentação específica que determine uma proporção mínima ou máxima obrigatória de aditivo para que a gasolina seja vendida como aditivada no posto. Portanto, abastecer com <b>gasolina comum e adicionar um frasco de aditivo avulso</b> de marca confiável é muito mais seguro e econômico, ou utilize <b>gasolina premium</b> (especialmente indicada para carros de alto padrão, turbo ou híbridos).
+          <b>⚠️ Alerta sobre Gasolina Aditivada:</b> Não existe regulamentação que determine proporção mínima ou máxima obrigatória de aditivo para que a gasolina seja vendida como aditivada no posto. Vale mais a pena abastecer com <b>gasolina comum e dosar um aditivo avulso</b> de marca confiável, ou optar por <b>gasolina premium</b> (com maior octanagem e aditivação comprovada).
         </p>
         <p class="note">
-          <b>⚠️ Alerta de Saúde do Motor:</b> Viagens curtas (menos de 15 minutos) são prejudiciais à saúde do motor a longo prazo, pois o óleo não atinge a temperatura ideal de trabalho para evaporar a umidade e os resíduos de combustão. O <b>etanol é um agravante severo</b> nesses trajetos curtos devido ao seu maior calor de vaporização e condensação nos cilindros frios.
+          <b>⚠️ Alerta de Saúde do Motor:</b> Trajetos curtos (menos de 15 minutos) degradam o óleo do motor precocemente, pois não evaporam a condensação. O <b>etanol é um forte agravante</b> nesses trajetos frios devido ao seu alto calor de vaporização.
         </p>
       </details>
     </div>
