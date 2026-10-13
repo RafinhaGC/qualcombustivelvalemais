@@ -1366,9 +1366,9 @@ CARROS_MAP[CARRO_GASOLINA_GENERICO] = {
 /* ====================== Teores Oficiais e Eficiência ====================== */
 
 const ETANOL_NA_GASOLINA = {
-  comum: 0.27,      // 27% de etanol anidro (Resolução ANP)
-  aditivada: 0.27,  // 27% de etanol anidro (Resolução ANP)
-  premium: 0.25     // 25% de etanol anidro (Resolução ANP)
+  comum: 0.32,      // 32% de etanol anidro
+  aditivada: 0.32,  // 32% de etanol anidro
+  premium: 0.25     // 25% de etanol anidro
 };
 
 const EFICIENCIA = {
@@ -1395,7 +1395,7 @@ const BENEFICIOS_PREMIUM = [
   ["Proteção do motor:", "reduz severamente o risco de detonação em motores de alta taxa de compressão e turbo, preservando componentes internos a longo prazo."],
   ["Motor mais limpo:", "aditivos detergentes e dispersantes de última geração previnem a formação de carbonização em válvulas e bicos injetores."],
   ["Melhor desempenho:", "respostas mais vigorosas e potência estável em motores calibrados para combustíveis de alta octanagem."],
-  ["Menor teor de etanol:", "contém 25% de etanol anidro (contra 27% da comum/aditivada), proporcionando maior densidade energética."],
+  ["Menor teor de etanol:", "contém 25% de etanol anidro (contra 32% da comum/aditivada), proporcionando maior densidade energética."],
   ["Rendimento e autonomia:", "o ganho efetivo de km/L ocorre em motores com tecnologia que ajusta avanço de ignição para alta octanagem; em motores convencionais a autonomia energética é equivalente."]
 ];
 
@@ -1518,7 +1518,7 @@ const carroLabelEl = $("carroLabel");
 
 function popularSeletorCarros(filtroTexto = "") {
   const modoFlex = toggleVeiculoFlexEl ? toggleVeiculoFlexEl.checked : true;
-  const valorAtual = carroSel.value || (modoFlex ? CARRO_GENERICO : CARRO_GASOLINA_GENERICO);
+  const valorAtual = carroSel.value || "focus_do_rafa";
   carroSel.replaceChildren();
 
   if (carroLabelEl) {
@@ -1624,9 +1624,9 @@ function popularSeletorCarros(filtroTexto = "") {
   }
 }
 
-// Inicializa o seletor com o carro genérico pré-selecionado por padrão
+// Inicializa o seletor com o Focus do Rafa pré-selecionado por padrão
 popularSeletorCarros();
-carroSel.value = CARRO_GENERICO;
+carroSel.value = "focus_do_rafa";
 
 buscaCarroInput.addEventListener("input", e => {
   popularSeletorCarros(e.target.value);
@@ -1728,7 +1728,7 @@ function ranking(carro, prices, brand, percurso) {
 /* ====================== Rabo de Galo (Mistura 50/50 com Emoji de Drink) ====================== */
 
 function calcularRaboDeGalo(litrosTotal, precoEtanol, precoGas, tipoGasolina) {
-  const eg = ETANOL_NA_GASOLINA[tipoGasolina] || 0.27;
+  const eg = ETANOL_NA_GASOLINA[tipoGasolina] || 0.32;
   const litrosGas = (0.50 / (1 - eg)) * litrosTotal;
   const litrosEtanol = litrosTotal - litrosGas;
   const custoTotal = (litrosGas * precoGas) + (litrosEtanol * precoEtanol);
@@ -1794,14 +1794,14 @@ function atualizarModoRachador() {
     return;
   }
 
-  // Mistura com Gasolina Comum (27% de etanol anidro)
+  // Mistura com Gasolina Comum (32% de etanol anidro)
   if (pComum !== null) {
     const res = calcularRaboDeGalo(litros, pEtanol, pComum, "comum");
     cards.push(el("div", { class: "rachador-card comum" },
       el("div", { class: "rachador-title" }, "🍹 Rabo de Galo 50/50 com Gasolina Comum"),
       el("div", { class: "rachador-grid" },
         el("div", { class: "rachador-metric" },
-          el("small", {}, "Gasolina comum (27% etanol)"),
+          el("small", {}, "Gasolina comum (32% etanol)"),
           el("b", {}, f1(res.litrosGas) + " L"),
           el("small", {}, brl(res.litrosGas * pComum))
         ),
@@ -1844,7 +1844,7 @@ function atualizarModoRachador() {
   }
 
   cards.push(el("p", { class: "note" },
-    "Cálculo compensa o teor real de etanol já diluído na gasolina de refinaria (27% na comum e 25% na premium) para obter exatamente 50% de etanol e 50% de gasolina pura no volume de " + f1(litros) + " L."
+    "Cálculo compensa o teor real de etanol já diluído na gasolina de refinaria (32% na comum e 25% na premium) para obter exatamente 50% de etanol e 50% de gasolina pura no volume de " + f1(litros) + " L."
   ));
 
   container.replaceChildren(...cards);
@@ -1971,7 +1971,7 @@ function calcular(rolar) {
     partes.push(el("div", { class: "benefits" },
       el("h3", {}, "⭐ Principais benefícios da gasolina premium (" + brand + ")"),
       ul,
-      el("p", { class: "note" }, "A gasolina premium conta com apenas 25% de etanol anidro (contra 27% da comum/aditivada) e octanagem muito superior (RON 98 a 102). Os benefícios mecânicos são comprovados em motores modernos, turbo, híbridos e esportivos.")));
+      el("p", { class: "note" }, "A gasolina premium conta com apenas 25% de etanol anidro (contra 32% da comum/aditivada) e octanagem muito superior (RON 98 a 102). Os benefícios mecânicos são comprovados em motores modernos, turbo, híbridos e esportivos.")));
   }
 
   // Disclaimer sobre viagens curtas e etanol
@@ -2008,8 +2008,8 @@ function atualizarTabela() {
   if (carro.etanol) {
     linhas.push(linha("Etanol", "etanol"));
   }
-  linhas.push(linha("Gasolina comum (27% etanol)", "comum"));
-  linhas.push(linha("Gasolina aditivada (27% etanol)", "aditivada"));
+  linhas.push(linha("Gasolina comum (32% etanol)", "comum"));
+  linhas.push(linha("Gasolina aditivada (32% etanol)", "aditivada"));
   Object.keys(EFICIENCIA.premium.marcas).forEach(m => linhas.push(linha("Premium – " + m + " (25% etanol)", "premium", m)));
   tabela.replaceChildren(...linhas);
 }
@@ -2086,9 +2086,9 @@ toggleVeiculoFlexEl.addEventListener("change", () => {
   const modoFlex = toggleVeiculoFlexEl.checked;
   const carroAtual = CARROS_MAP[carroSel.value];
   if (modoFlex && carroAtual && carroAtual.etanol === null && carroSel.value !== CARRO_PERSONALIZADO) {
-    carroSel.value = CARRO_GENERICO;
+    carroSel.value = "focus_do_rafa";
   } else if (!modoFlex && carroAtual && carroAtual.etanol !== null && carroSel.value !== CARRO_PERSONALIZADO && carroSel.value !== "focus_do_rafa") {
-    carroSel.value = CARRO_GASOLINA_GENERICO;
+    carroSel.value = "focus_do_rafa";
   }
   popularSeletorCarros(buscaCarroInput.value);
   esconderResultado();
