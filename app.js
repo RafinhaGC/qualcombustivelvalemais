@@ -10,7 +10,7 @@ const CARRO_DESTAQUE = {
   "focus_do_rafa": {
     nome: "Focus do Rafa",
     gasolina: { cidade: 7.0, estrada: 16.0 },
-    etanol:   { cidade: 6.7, estrada: 9.0 }
+    etanol:   { cidade: 5.8, estrada: 11.0 }
   }
 };
 
@@ -315,11 +315,6 @@ const MONTADORAS = {
     "delorean_dmc12": {
       nome: "DeLorean DMC-12 2.8 V6 PRV Gasolina (1981 a 1983)",
       gasolina: { cidade: 6.5, estrada: 10.0 },
-      etanol:   null
-    },
-    "delorean_bttf_easteregg": {
-      nome: "⚡ DeLorean Máquina do Tempo (De Volta p/ o Futuro - 1.21 GW / 88 mph)",
-      gasolina: { cidade: 1.21, estrada: 88.0 },
       etanol:   null
     }
   },
@@ -1371,9 +1366,9 @@ CARROS_MAP[CARRO_GASOLINA_GENERICO] = {
 /* ====================== Teores Oficiais e Eficiência ====================== */
 
 const ETANOL_NA_GASOLINA = {
-  comum: 0.32,      // 32% de etanol anidro
-  aditivada: 0.32,  // 32% de etanol anidro
-  premium: 0.25     // 25% de etanol anidro
+  comum: 0.27,      // 27% de etanol anidro (Resolução ANP)
+  aditivada: 0.27,  // 27% de etanol anidro (Resolução ANP)
+  premium: 0.25     // 25% de etanol anidro (Resolução ANP)
 };
 
 const EFICIENCIA = {
@@ -1383,11 +1378,11 @@ const EFICIENCIA = {
   premium: {
     nome: "Gasolina premium",
     marcas: {
-      "Petrobras Podium":               1.035,
-      "Shell V-Power Racing":           1.035,
-      "Ipiranga Ipimax Pro":            1.025,
-      "Petronas Primax Alta Octanagem": 1.025,
-      "Outra marca":                    1.02
+      "Petrobras Podium":               1.0,
+      "Shell V-Power Racing":           1.0,
+      "Ipiranga Ipimax Pro":            1.0,
+      "Petronas Primax Alta Octanagem": 1.0,
+      "Outra marca":                    1.0
     }
   }
 };
@@ -1397,11 +1392,11 @@ const NOME_PERCURSO = { cidade: "Cidade", estrada: "Estrada", misto: "Misto" };
 
 const BENEFICIOS_PREMIUM = [
   ["Maior octanagem:", "resiste melhor à compressão e previne detonação (\"batida de pino\")."],
-  ["Proteção do motor:", "elimina pré-ignição, preservando pistões, velas e bronzinas a longo prazo."],
-  ["Motor mais limpo:", "aditivos detergentes de última geração impedem formação de carbonização em válvulas e bicos injetores."],
-  ["Melhor desempenho:", "respostas mais vigorosas do acelerador e potência estável em motores turbo, híbridos e com injeção direta."],
-  ["Menor teor de etanol:", "contém 25% de etanol anidro (contra 32% da comum), aumentando a densidade energética."],
-  ["Possível ganho de consumo:", "só ocorre em motores com tecnologia que ajusta avanço de ponto para alta octanagem; em motores básicos é discreto."]
+  ["Proteção do motor:", "reduz severamente o risco de detonação em motores de alta taxa de compressão e turbo, preservando componentes internos a longo prazo."],
+  ["Motor mais limpo:", "aditivos detergentes e dispersantes de última geração previnem a formação de carbonização em válvulas e bicos injetores."],
+  ["Melhor desempenho:", "respostas mais vigorosas e potência estável em motores calibrados para combustíveis de alta octanagem."],
+  ["Menor teor de etanol:", "contém 25% de etanol anidro (contra 27% da comum/aditivada), proporcionando maior densidade energética."],
+  ["Rendimento e autonomia:", "o ganho efetivo de km/L ocorre em motores com tecnologia que ajusta avanço de ignição para alta octanagem; em motores convencionais a autonomia energética é equivalente."]
 ];
 
 /* ====================== Utilitários DOM e Formatação ====================== */
@@ -1450,7 +1445,7 @@ function formatarCampo(bruto, cfg, apagando) {
   let dec = temVirgula ? s.slice(i + 1).replace(/,/g, "") : "";
 
   if (!temVirgula && cfg.autoComma && !apagando) {
-    const n = inteiro[0] === "1" ? 2 : 1;
+    const n = 1;
     if (inteiro.length >= n) {
       dec = inteiro.slice(n);
       inteiro = inteiro.slice(0, n);
@@ -1523,7 +1518,7 @@ const carroLabelEl = $("carroLabel");
 
 function popularSeletorCarros(filtroTexto = "") {
   const modoFlex = toggleVeiculoFlexEl ? toggleVeiculoFlexEl.checked : true;
-  const valorAtual = carroSel.value || "focus_do_rafa";
+  const valorAtual = carroSel.value || (modoFlex ? CARRO_GENERICO : CARRO_GASOLINA_GENERICO);
   carroSel.replaceChildren();
 
   if (carroLabelEl) {
@@ -1629,9 +1624,9 @@ function popularSeletorCarros(filtroTexto = "") {
   }
 }
 
-// Inicializa com o Focus do Rafa no topo e selecionado
+// Inicializa o seletor com o carro genérico pré-selecionado por padrão
 popularSeletorCarros();
-carroSel.value = "focus_do_rafa";
+carroSel.value = CARRO_GENERICO;
 
 buscaCarroInput.addEventListener("input", e => {
   popularSeletorCarros(e.target.value);
@@ -1678,7 +1673,7 @@ function obterCarro() {
     const c = CARROS_MAP[escolha] || CARROS_MAP["focus_do_rafa"];
     return { carro: c };
   }
-  const comEtanol = toggleEtanolEl.checked;
+  const comEtanol = etanolAtivo();
   const kmGC = parseNumero($("kmGC").value);
   const kmGE = parseNumero($("kmGE").value);
 
@@ -1733,7 +1728,7 @@ function ranking(carro, prices, brand, percurso) {
 /* ====================== Rabo de Galo (Mistura 50/50 com Emoji de Drink) ====================== */
 
 function calcularRaboDeGalo(litrosTotal, precoEtanol, precoGas, tipoGasolina) {
-  const eg = ETANOL_NA_GASOLINA[tipoGasolina] || 0.32;
+  const eg = ETANOL_NA_GASOLINA[tipoGasolina] || 0.27;
   const litrosGas = (0.50 / (1 - eg)) * litrosTotal;
   const litrosEtanol = litrosTotal - litrosGas;
   const custoTotal = (litrosGas * precoGas) + (litrosEtanol * precoEtanol);
@@ -1748,6 +1743,9 @@ function calcularRaboDeGalo(litrosTotal, precoEtanol, precoGas, tipoGasolina) {
   };
 }
 
+const PRECO_MIN = 2.0;
+const PRECO_MAX = 10.0;
+
 function atualizarModoRachador() {
   const container = $("rachadorResult");
   if (!toggleRachadorEl.checked || !etanolAtivo()) {
@@ -1755,12 +1753,21 @@ function atualizarModoRachador() {
     return;
   }
 
-  const litros = parseNumero(litrosMisturaEl.value) || 40;
+  const cards = [];
+  const rawLitros = (litrosMisturaEl.value || "").trim();
+  const litros = parseNumero(rawLitros);
+
+  if (litros === null || isNaN(litros) || litros < 5 || litros > 150) {
+    cards.push(el("div", { class: "tip", style: "border-color: var(--danger); color: var(--danger);" },
+      "⚠️ Informe um volume de tanque válido para a mistura (entre 5 e 150 litros)."
+    ));
+    container.replaceChildren(...cards);
+    return;
+  }
+
   const pEtanol = parseNumero($("etanol").value);
   const pComum = parseNumero($("comum").value);
   const pPremium = parseNumero($("premium").value);
-
-  const cards = [];
 
   if (pEtanol === null || (pComum === null && pPremium === null)) {
     cards.push(el("div", { class: "tip" },
@@ -1771,14 +1778,30 @@ function atualizarModoRachador() {
     return;
   }
 
-  // Mistura com Gasolina Comum (32% de etanol anidro)
+  const precosInformados = [
+    { nome: "etanol", val: pEtanol },
+    { nome: "gasolina comum", val: pComum },
+    { nome: "gasolina premium", val: pPremium }
+  ].filter(p => p.val !== null);
+
+  const foraDaFaixa = precosInformados.filter(p => p.val < PRECO_MIN || p.val > PRECO_MAX);
+  if (foraDaFaixa.length > 0) {
+    const nomes = foraDaFaixa.map(p => p.nome).join(" e ");
+    cards.push(el("div", { class: "tip", style: "border-color: var(--danger); color: var(--danger);" },
+      `⚠️ O preço de ${nomes} deve estar entre R$ ${f1(PRECO_MIN)} e R$ ${f1(PRECO_MAX)} por litro.`
+    ));
+    container.replaceChildren(...cards);
+    return;
+  }
+
+  // Mistura com Gasolina Comum (27% de etanol anidro)
   if (pComum !== null) {
     const res = calcularRaboDeGalo(litros, pEtanol, pComum, "comum");
     cards.push(el("div", { class: "rachador-card comum" },
       el("div", { class: "rachador-title" }, "🍹 Rabo de Galo 50/50 com Gasolina Comum"),
       el("div", { class: "rachador-grid" },
         el("div", { class: "rachador-metric" },
-          el("small", {}, "Gasolina comum (32% etanol)"),
+          el("small", {}, "Gasolina comum (27% etanol)"),
           el("b", {}, f1(res.litrosGas) + " L"),
           el("small", {}, brl(res.litrosGas * pComum))
         ),
@@ -1821,7 +1844,7 @@ function atualizarModoRachador() {
   }
 
   cards.push(el("p", { class: "note" },
-    "Cálculo compensa o teor real de etanol já diluído na gasolina de refinaria (32% na comum e 25% na premium) para obter exatamente 50% de etanol e 50% de gasolina pura no volume de " + f1(litros) + " L."
+    "Cálculo compensa o teor real de etanol já diluído na gasolina de refinaria (27% na comum e 25% na premium) para obter exatamente 50% de etanol e 50% de gasolina pura no volume de " + f1(litros) + " L."
   ));
 
   container.replaceChildren(...cards);
@@ -1849,8 +1872,14 @@ function calcular(rolar) {
       ? "Informe o preço de pelo menos 2 combustíveis para comparar."
       : "Informe o preço de pelo menos um tipo de gasolina.");
   }
-  if (preenchidos.some(v => v > 30)) { esconderResultado(); return mostrarErro("Algum preço parece alto demais. Use o preço por litro (ex.: 5,89)."); }
-  if (preenchidos.some(v => v < 1))  { esconderResultado(); return mostrarErro("Algum preço parece baixo demais. Use o preço por litro (ex.: 5,89)."); }
+  if (preenchidos.some(v => v < PRECO_MIN)) {
+    esconderResultado();
+    return mostrarErro(`Algum preço parece baixo demais. Informe valores realistas por litro (entre R$ ${f1(PRECO_MIN)} e R$ ${f1(PRECO_MAX)}).`);
+  }
+  if (preenchidos.some(v => v > PRECO_MAX)) {
+    esconderResultado();
+    return mostrarErro(`Algum preço parece alto demais. Informe valores realistas por litro (entre R$ ${f1(PRECO_MIN)} e R$ ${f1(PRECO_MAX)}).`);
+  }
 
   const { carro, erro } = obterCarro();
   if (erro) { esconderResultado(); return mostrarErro(erro); }
@@ -1930,7 +1959,7 @@ function calcular(rolar) {
       el("b", {}, "💡 Recomendação prática: "),
       "É muito mais vantajoso ",
       el("b", {}, "abastecer com gasolina comum e colocar você mesmo um frasco de aditivo avulso"),
-      " de marca comprovada (Koube, STP, Bardahl, etc.), ou optar por ",
+      " de marca confiável e certificada, ou optar por ",
       el("b", {}, "gasolina premium"),
       ", especialmente em modelos turbo, com injeção direta ou alta taxa de compressão."
     ));
@@ -1942,7 +1971,7 @@ function calcular(rolar) {
     partes.push(el("div", { class: "benefits" },
       el("h3", {}, "⭐ Principais benefícios da gasolina premium (" + brand + ")"),
       ul,
-      el("p", { class: "note" }, "A gasolina premium conta com apenas 25% de etanol anidro (contra 32% da comum) e octanagem muito superior (RON 98 a 102). Os benefícios mecânicos são comprovados em motores modernos, turbo, híbridos e esportivos.")));
+      el("p", { class: "note" }, "A gasolina premium conta com apenas 25% de etanol anidro (contra 27% da comum/aditivada) e octanagem muito superior (RON 98 a 102). Os benefícios mecânicos são comprovados em motores modernos, turbo, híbridos e esportivos.")));
   }
 
   // Disclaimer sobre viagens curtas e etanol
@@ -1952,19 +1981,6 @@ function calcular(rolar) {
     el("b", {}, "etanol é um forte agravante"),
     " por condensar em excesso nos cilindros frios e escorrer para o cárter."
   ));
-
-  // Easter Egg: DeLorean Máquina do Tempo (De Volta Para o Futuro)
-  if (carroSel.value === "delorean_bttf_easteregg") {
-    partes.push(el("div", { class: "tip easter-egg" },
-      el("b", {}, "⚡ Easter Egg do Dr. Emmett Brown (De Volta Para o Futuro):"),
-      el("br"), el("br"),
-      "• ", el("b", {}, "Capacitor de Fluxo:"), " Consome 1.21 Gigawatts de potência elétrica gerados por Plutônio ou pelo reator Mr. Fusion (lixo orgânico: casca de banana e cerveja).",
-      el("br"),
-      "• ", el("b", {}, "Salto Temporal:"), " O motor V6 precisa de gasolina para alcançar as ", el("b", {}, "88 mph (141,6 km/h)"), ", fazendo 88,0 km/L em cruzeiro no continuum espaço-tempo!",
-      el("br"),
-      "• ", el("b", {}, "⚠️ Alerta Técnico (Filme 3):"), " Nunca tente abastecer com uísque ou destilado do Velho Oeste — isso explode o carburador!"
-    ));
-  }
 
   partes.push(el("p", { class: "note" }, "Simulação baseada em: " + carro.nome + ". Percurso misto = 50% cidade e 50% estrada."));
 
@@ -1992,8 +2008,8 @@ function atualizarTabela() {
   if (carro.etanol) {
     linhas.push(linha("Etanol", "etanol"));
   }
-  linhas.push(linha("Gasolina comum (32% etanol)", "comum"));
-  linhas.push(linha("Gasolina aditivada (32% etanol)", "aditivada"));
+  linhas.push(linha("Gasolina comum (27% etanol)", "comum"));
+  linhas.push(linha("Gasolina aditivada (27% etanol)", "aditivada"));
   Object.keys(EFICIENCIA.premium.marcas).forEach(m => linhas.push(linha("Premium – " + m + " (25% etanol)", "premium", m)));
   tabela.replaceChildren(...linhas);
 }
@@ -2070,9 +2086,9 @@ toggleVeiculoFlexEl.addEventListener("change", () => {
   const modoFlex = toggleVeiculoFlexEl.checked;
   const carroAtual = CARROS_MAP[carroSel.value];
   if (modoFlex && carroAtual && carroAtual.etanol === null && carroSel.value !== CARRO_PERSONALIZADO) {
-    carroSel.value = "focus_do_rafa";
+    carroSel.value = CARRO_GENERICO;
   } else if (!modoFlex && carroAtual && carroAtual.etanol !== null && carroSel.value !== CARRO_PERSONALIZADO && carroSel.value !== "focus_do_rafa") {
-    carroSel.value = "focus_do_rafa";
+    carroSel.value = CARRO_GASOLINA_GENERICO;
   }
   popularSeletorCarros(buscaCarroInput.value);
   esconderResultado();
@@ -2094,7 +2110,13 @@ toggleRachadorEl.addEventListener("change", () => {
   if (toggleRachadorEl.checked) atualizarModoRachador();
 });
 
-litrosMisturaEl.addEventListener("input", atualizarModoRachador);
+litrosMisturaEl.addEventListener("input", e => {
+  const limpo = e.target.value.replace(/\D/g, "").slice(0, 3);
+  if (e.target.value !== limpo) {
+    e.target.value = limpo;
+  }
+  atualizarModoRachador();
+});
 
 carroSel.addEventListener("change", () => {
   esconderResultado();
