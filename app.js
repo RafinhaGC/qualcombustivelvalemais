@@ -109,6 +109,21 @@ const MONTADORAS = {
       gasolina: { cidade: 6.4, estrada: 9.6 },
       etanol:   null
     },
+    "opala_41": {
+      nome: "Chevrolet Opala / Comodoro / Diplomata 4.1 6 cil Gasolina (1971 a 1992)",
+      gasolina: { cidade: 5.5, estrada: 8.2 },
+      etanol:   null
+    },
+    "opala_25": {
+      nome: "Chevrolet Opala 2.5 4 cil Gasolina (1968 a 1992)",
+      gasolina: { cidade: 7.0, estrada: 10.0 },
+      etanol:   null
+    },
+    "chevette_14": {
+      nome: "Chevrolet Chevette 1.4 Gasolina (1973 a 1982)",
+      gasolina: { cidade: 9.0, estrada: 12.5 },
+      etanol:   null
+    },
     "chevette_16": {
       nome: "Chevrolet Chevette 1.6 Gasolina (1982 a 1993)",
       gasolina: { cidade: 8.6, estrada: 12.1 },
@@ -189,6 +204,18 @@ const MONTADORAS = {
     "chrysler_300c_57": {
       nome: "Chrysler 300C 5.7 V8 Hemi Gasolina (2005 a 2012)",
       gasolina: { cidade: 5.8, estrada: 9.2 },
+      etanol:   null
+    }
+  },
+  "DeLorean (DMC)": {
+    "delorean_dmc12": {
+      nome: "DeLorean DMC-12 2.8 V6 PRV Gasolina (1981 a 1983)",
+      gasolina: { cidade: 6.5, estrada: 10.0 },
+      etanol:   null
+    },
+    "delorean_bttf_easteregg": {
+      nome: "⚡ DeLorean Máquina do Tempo (De Volta p/ o Futuro - 1.21 GW / 88 mph)",
+      gasolina: { cidade: 1.21, estrada: 88.0 },
       etanol:   null
     }
   },
@@ -765,6 +792,41 @@ const MONTADORAS = {
       gasolina: { cidade: 11.1, estrada: 13.1 },
       etanol:   { cidade: 7.6, estrada: 9.2 }
     },
+    "gol_quadrado_16": {
+      nome: "VW Gol Quadrado 1.6 AP Gasolina (1984 a 1994)",
+      gasolina: { cidade: 9.5, estrada: 13.0 },
+      etanol:   null
+    },
+    "gol_gts_18": {
+      nome: "VW Gol GTS 1.8S AP Gasolina (1987 a 1994)",
+      gasolina: { cidade: 8.8, estrada: 12.5 },
+      etanol:   null
+    },
+    "gol_gti_20": {
+      nome: "VW Gol GTI 2.0 AP Gasolina (1988 a 1994)",
+      gasolina: { cidade: 9.0, estrada: 13.2 },
+      etanol:   null
+    },
+    "gol_quadrado_ar": {
+      nome: "VW Gol 1.3 / 1.6 Refrigerado a Ar Gasolina (1980 a 1986)",
+      gasolina: { cidade: 9.0, estrada: 12.0 },
+      etanol:   null
+    },
+    "voyage_quadrado_16": {
+      nome: "VW Voyage Quadrado 1.6 AP Gasolina (1981 a 1995)",
+      gasolina: { cidade: 9.8, estrada: 13.5 },
+      etanol:   null
+    },
+    "voyage_quadrado_18": {
+      nome: "VW Voyage Quadrado 1.8 AP Gasolina (1986 a 1995)",
+      gasolina: { cidade: 9.0, estrada: 12.8 },
+      etanol:   null
+    },
+    "fusca_1300_1600": {
+      nome: "VW Fusca 1300 / 1600 Gasolina (1959 a 1996)",
+      gasolina: { cidade: 8.5, estrada: 11.5 },
+      etanol:   null
+    },
     "fox_16": {
       nome: "VW Fox 1.6 Prime / Highline Flex (2010 a 2021)",
       gasolina: { cidade: 10.7, estrada: 13.2 },
@@ -1065,19 +1127,22 @@ function popularSeletorCarros(filtroTexto = "") {
   let primeiroEncontrado = null;
   let valorAtualAindaExiste = false;
 
-  // 1. Topo: Destaque Especial (Focus do Rafa)
-  const itensDestaque = Object.entries(CARRO_DESTAQUE).filter(([, carro]) => {
+  // 1. Topo: Destaque Especial (Focus do Rafa e Informar consumo oficial do meu carro na mesma categoria)
+  const itensDestaque = [
+    ["focus_do_rafa", CARRO_DESTAQUE.focus_do_rafa.nome],
+    [CARRO_PERSONALIZADO, "Informar consumo oficial do meu carro"]
+  ].filter(([chave, nome]) => {
     if (!termo) return true;
-    return removerAcentos(carro.nome).includes(termo);
+    return removerAcentos(nome).includes(termo);
   });
 
   if (itensDestaque.length > 0) {
     const optgroupDestaque = document.createElement("optgroup");
     optgroupDestaque.label = "⭐ Destaque Especial";
-    for (const [chave, carro] of itensDestaque) {
+    for (const [chave, nome] of itensDestaque) {
       const opt = document.createElement("option");
       opt.value = chave;
-      opt.textContent = carro.nome;
+      opt.textContent = nome;
       if (!primeiroEncontrado) primeiroEncontrado = chave;
       if (chave === valorAtual) valorAtualAindaExiste = true;
       optgroupDestaque.appendChild(opt);
@@ -1109,11 +1174,10 @@ function popularSeletorCarros(filtroTexto = "") {
     }
   }
 
-  // 3. Grupo Padrões e Personalizado
+  // 3. Grupo Padrões Médios de Mercado
   const opcoesGerais = [
     [CARRO_GENERICO, CARROS_MAP[CARRO_GENERICO].nome],
-    [CARRO_GASOLINA_GENERICO, CARROS_MAP[CARRO_GASOLINA_GENERICO].nome],
-    [CARRO_PERSONALIZADO, "Informar consumo oficial do meu carro"]
+    [CARRO_GASOLINA_GENERICO, CARROS_MAP[CARRO_GASOLINA_GENERICO].nome]
   ].filter(([chave, nome]) => {
     if (!termo) return true;
     return removerAcentos(nome).includes(termo);
@@ -1121,7 +1185,7 @@ function popularSeletorCarros(filtroTexto = "") {
 
   if (opcoesGerais.length > 0) {
     const optgroupGeral = document.createElement("optgroup");
-    optgroupGeral.label = "⚙️ Padrões e Personalizado";
+    optgroupGeral.label = "⚙️ Padrões Médios de Mercado";
     for (const [chave, nome] of opcoesGerais) {
       const opt = document.createElement("option");
       opt.value = chave;
@@ -1469,6 +1533,19 @@ function calcular(rolar) {
     el("b", {}, "etanol é um forte agravante"),
     " por condensar em excesso nos cilindros frios e escorrer para o cárter."
   ));
+
+  // Easter Egg: DeLorean Máquina do Tempo (De Volta Para o Futuro)
+  if (carroSel.value === "delorean_bttf_easteregg") {
+    partes.push(el("div", { class: "tip easter-egg" },
+      el("b", {}, "⚡ Easter Egg do Dr. Emmett Brown (De Volta Para o Futuro):"),
+      el("br"), el("br"),
+      "• ", el("b", {}, "Capacitor de Fluxo:"), " Consome 1.21 Gigawatts de potência elétrica gerados por Plutônio ou pelo reator Mr. Fusion (lixo orgânico: casca de banana e cerveja).",
+      el("br"),
+      "• ", el("b", {}, "Salto Temporal:"), " O motor V6 precisa de gasolina para alcançar as ", el("b", {}, "88 mph (141,6 km/h)"), ", fazendo 88,0 km/L em cruzeiro no continuum espaço-tempo!",
+      el("br"),
+      "• ", el("b", {}, "⚠️ Alerta Técnico (Filme 3):"), " Nunca tente abastecer com uísque ou destilado do Velho Oeste — isso explode o carburador!"
+    ));
+  }
 
   partes.push(el("p", { class: "note" }, "Simulação baseada em: " + carro.nome + ". Percurso misto = 50% cidade e 50% estrada."));
 

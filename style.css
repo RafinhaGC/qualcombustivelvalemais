@@ -347,6 +347,11 @@ button:focus-visible {
   border-left: 4px solid var(--warning);
   background: rgba(251, 191, 36, 0.08);
 }
+.tip.easter-egg {
+  border-left: 4px solid var(--accent);
+  background: rgba(0, 210, 190, 0.1);
+  box-shadow: 0 0 15px rgba(0, 210, 190, 0.15);
+}
 
 details { margin-top: 4px; }
 summary {
