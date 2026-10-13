@@ -628,6 +628,21 @@ const MONTADORAS = {
       nome: "Honda WR-V 1.5 16V Flex (2017 a 2021)",
       gasolina: { cidade: 11.7, estrada: 12.4 },
       etanol:   { cidade: 8.1, estrada: 8.8 }
+    },
+    "accord_35_v6_g9": {
+      nome: "Honda Accord 3.5 V6 EX Gasolina (2013 a 2017)",
+      gasolina: { cidade: 7.9, estrada: 12.3 },
+      etanol:   null
+    },
+    "accord_20_turbo_g10": {
+      nome: "Honda Accord Touring 2.0 Turbo Gasolina (2018 a 2022)",
+      gasolina: { cidade: 9.0, estrada: 12.3 },
+      etanol:   null
+    },
+    "accord_hybrid_g11": {
+      nome: "Honda Accord Advanced Hybrid 2.0 e:HEV Gasolina (2023 a 2026)",
+      gasolina: { cidade: 17.8, estrada: 14.7 },
+      etanol:   null
     }
   },
   "Hyundai": {
@@ -675,6 +690,11 @@ const MONTADORAS = {
       nome: "Hyundai ix35 2.0 16V Flex (2012 a 2021)",
       gasolina: { cidade: 9.2, estrada: 11.0 },
       etanol:   { cidade: 6.4, estrada: 7.8 }
+    },
+    "azera_33_v6_2010": {
+      nome: "Hyundai Azera 3.3 V6 GLS Gasolina (2007 a 2011)",
+      gasolina: { cidade: 6.8, estrada: 10.3 },
+      etanol:   null
     }
   },
   "Jeep": {
@@ -1133,6 +1153,26 @@ const MONTADORAS = {
       nome: "Toyota Fielder 1.8 16V Flex (2007 a 2008)",
       gasolina: { cidade: 11.0, estrada: 13.0 },
       etanol:   { cidade: 7.5, estrada: 9.0 }
+    },
+    "camry_35_v6_xv50": {
+      nome: "Toyota Camry 3.5 V6 XLE Gasolina (2012 a 2017)",
+      gasolina: { cidade: 8.3, estrada: 11.5 },
+      etanol:   null
+    },
+    "camry_35_v6_xv70": {
+      nome: "Toyota Camry 3.5 V6 XLE Gasolina (2018 a 2021)",
+      gasolina: { cidade: 8.3, estrada: 11.8 },
+      etanol:   null
+    },
+    "camry_hybrid_xv70": {
+      nome: "Toyota Camry 2.5 Hybrid XLE Gasolina (2022 a 2024)",
+      gasolina: { cidade: 17.4, estrada: 15.3 },
+      etanol:   null
+    },
+    "camry_hybrid_xv80": {
+      nome: "Toyota Camry 2.5 Hybrid Gasolina (2024 a 2026)",
+      gasolina: { cidade: 19.1, estrada: 17.5 },
+      etanol:   null
     }
   },
   "Volkswagen (VW)": {
