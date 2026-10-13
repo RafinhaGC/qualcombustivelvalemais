@@ -1,4 +1,4 @@
-const CACHE = "combustivel-v9";
+const CACHE = "combustivel-v12";
 const FILES = [
   "./", "./index.html", "./style.css", "./app.js",
   "./manifest.webmanifest", "./icon-192.png", "./icon-512.png"

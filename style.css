@@ -106,6 +106,29 @@ label, legend {
   font-weight: 600;
 }
 
+.search-box {
+  display: flex;
+  align-items: center;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0 12px;
+  margin-bottom: 8px;
+  transition: border-color .2s, box-shadow .2s;
+}
+
+.search-box:focus-within {
+  border-color: var(--accent);
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+  box-shadow: 0 0 12px var(--accent-glow);
+}
+
+.search-box input {
+  font-size: .95rem;
+  padding: 10px 0;
+}
+
 input, select {
   width: 100%;
   background: transparent;

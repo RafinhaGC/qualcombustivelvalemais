@@ -5,75 +5,115 @@
    Consumo oficial em km/L (Gasolina / Etanol) com anos de geração
    ============================================================ */
 
+// Carro de destaque especial solicitado pelo usuário
+const CARRO_DESTAQUE = {
+  "focus_do_rafa": {
+    nome: "Focus do Rafa",
+    gasolina: { cidade: 7.0, estrada: 16.0 },
+    etanol:   { cidade: 6.7, estrada: 9.0 }
+  }
+};
+
 const MONTADORAS = {
-  "Ford": {
-    "focus_titanium_20": {
-      nome: "Ford Focus Titanium 2.0 Direct Flex (2013 a 2019)",
-      gasolina: { cidade: 8.0, estrada: 13.0 },
-      etanol:   { cidade: 6.7, estrada: 9.0 }
+  "Audi": {
+    "audi_a3_sedan_flex": {
+      nome: "Audi A3 Sedan 1.4 TFSI Flex (2015 a 2020)",
+      gasolina: { cidade: 11.7, estrada: 14.2 },
+      etanol:   { cidade: 8.1, estrada: 9.8 }
     },
-    "focus_16_se": {
-      nome: "Ford Focus SE 1.6 Ti-VCT Flex (2013 a 2019)",
-      gasolina: { cidade: 10.5, estrada: 13.0 },
-      etanol:   { cidade: 7.2, estrada: 9.2 }
-    },
-    "ka_10": {
-      nome: "Ford Ka 1.0 SE / SEL Flex (2014 a 2021)",
-      gasolina: { cidade: 13.0, estrada: 15.1 },
-      etanol:   { cidade: 8.9, estrada: 10.4 }
-    },
-    "ka_15_dragon": {
-      nome: "Ford Ka 1.5 Dragon Ti-VCT Flex (2018 a 2021)",
-      gasolina: { cidade: 12.9, estrada: 14.8 },
-      etanol:   { cidade: 8.9, estrada: 10.2 }
-    },
-    "fiesta_16": {
-      nome: "Ford New Fiesta 1.6 SE Flex (2013 a 2019)",
-      gasolina: { cidade: 11.7, estrada: 13.9 },
-      etanol:   { cidade: 8.0, estrada: 9.9 }
-    },
-    "fiesta_ecoboost": {
-      nome: "Ford Fiesta 1.0 EcoBoost Turbo Gasolina (2016 a 2018)",
-      gasolina: { cidade: 12.2, estrada: 15.3 },
+    "audi_a4_20_tfsi": {
+      nome: "Audi A4 2.0 TFSI Gasolina (2016 a 2023)",
+      gasolina: { cidade: 11.0, estrada: 14.3 },
       etanol:   null
     },
-    "fusion_25": {
-      nome: "Ford Fusion 2.5 i-VCT Flex (2013 a 2018)",
-      gasolina: { cidade: 8.5, estrada: 12.3 },
-      etanol:   { cidade: 5.4, estrada: 8.2 }
+    "audi_q3_14_flex": {
+      nome: "Audi Q3 1.4 TFSI Flex (2016 a 2020)",
+      gasolina: { cidade: 10.7, estrada: 12.5 },
+      etanol:   { cidade: 7.3, estrada: 8.7 }
     },
-    "fusion_ecoboost": {
-      nome: "Ford Fusion Titanium 2.0 EcoBoost AWD Gasolina (2013 a 2019)",
-      gasolina: { cidade: 8.2, estrada: 11.1 },
+    "audi_q5_20_2014": {
+      nome: "Audi Q5 2.0 TFSI quattro Gasolina (2013 a 2017)",
+      gasolina: { cidade: 8.5, estrada: 10.7 },
       etanol:   null
     },
-    "fusion_hybrid": {
-      nome: "Ford Fusion Titanium Hybrid Gasolina (2013 a 2019)",
-      gasolina: { cidade: 16.8, estrada: 15.1 },
+    "audi_q5_20_2018": {
+      nome: "Audi Q5 2.0 TFSI quattro Gasolina (2018 a 2024)",
+      gasolina: { cidade: 8.9, estrada: 11.2 },
+      etanol:   null
+    }
+  },
+  "BMW": {
+    "bmw_320i_f30_flex": {
+      nome: "BMW 320i 2.0 Turbo ActiveFlex (F30) (2014 a 2018)",
+      gasolina: { cidade: 9.8, estrada: 13.6 },
+      etanol:   { cidade: 6.8, estrada: 9.5 }
+    },
+    "bmw_320i_f30_gas": {
+      nome: "BMW 320i 2.0 Turbo Gasolina (F30) (2012 a 2014)",
+      gasolina: { cidade: 9.8, estrada: 14.0 },
       etanol:   null
     },
-    "ecosport_15": {
-      nome: "Ford EcoSport 1.5 Ti-VCT Dragon Flex (2017 a 2021)",
-      gasolina: { cidade: 11.6, estrada: 13.1 },
-      etanol:   { cidade: 8.3, estrada: 9.0 }
+    "bmw_320i_g20_flex": {
+      nome: "BMW 320i 2.0 Turbo Flex (G20) (2019 a 2026)",
+      gasolina: { cidade: 10.7, estrada: 13.2 },
+      etanol:   { cidade: 7.4, estrada: 9.2 }
     },
-    "ecosport_20": {
-      nome: "Ford EcoSport Titanium 2.0 Direct Flex (2017 a 2021)",
-      gasolina: { cidade: 9.7, estrada: 11.8 },
-      etanol:   { cidade: 6.8, estrada: 8.2 }
+    "bmw_118i_flex": {
+      nome: "BMW 118i / 120i 2.0 Turbo ActiveFlex (2014 a 2019)",
+      gasolina: { cidade: 10.5, estrada: 13.8 },
+      etanol:   { cidade: 7.3, estrada: 9.6 }
     },
-    "ranger_25": {
-      nome: "Ford Ranger 2.5 Duratec Flex (2012 a 2019)",
-      gasolina: { cidade: 6.7, estrada: 8.0 },
-      etanol:   { cidade: 4.8, estrada: 5.7 }
+    "bmw_x1_s20i": {
+      nome: "BMW X1 sDrive20i 2.0 Turbo ActiveFlex (2015 a 2022)",
+      gasolina: { cidade: 10.3, estrada: 13.0 },
+      etanol:   { cidade: 7.0, estrada: 9.0 }
     },
-    "territory_15": {
-      nome: "Ford Territory 1.5 Turbo EcoBoost Gasolina (2020 a 2023)",
-      gasolina: { cidade: 9.2, estrada: 10.0 },
+    "bmw_m3_f80": {
+      nome: "BMW M3 3.0 Biturbo Gasolina (2014 a 2018)",
+      gasolina: { cidade: 7.2, estrada: 10.5 },
+      etanol:   null
+    }
+  },
+  "Bugatti": {
+    "bugatti_veyron": {
+      nome: "Bugatti Veyron 16.4 8.0 W16 Quad-Turbo Gasolina (2005 a 2015)",
+      gasolina: { cidade: 3.4, estrada: 6.0 },
+      etanol:   null
+    },
+    "bugatti_chiron": {
+      nome: "Bugatti Chiron 8.0 W16 Quad-Turbo Gasolina (2016 a 2024)",
+      gasolina: { cidade: 3.8, estrada: 6.3 },
+      etanol:   null
+    },
+    "bugatti_tourbillon": {
+      nome: "Bugatti Tourbillon 8.3 V16 Híbrido Gasolina (2026+)",
+      gasolina: { cidade: 5.5, estrada: 8.5 },
+      etanol:   null
+    }
+  },
+  "Cadillac": {
+    "cadillac_eureka": {
+      nome: "Cadillac Eureka Funeral Coach 7.0 / 8.2 V8 Gasolina (1965 a 1976)",
+      gasolina: { cidade: 3.5, estrada: 6.0 },
+      etanol:   null
+    },
+    "cadillac_escalade_62": {
+      nome: "Cadillac Escalade 6.2 V8 Gasolina (2015 a 2024)",
+      gasolina: { cidade: 5.8, estrada: 8.5 },
       etanol:   null
     }
   },
   "Chevrolet (GM)": {
+    "camaro_ss": {
+      nome: "Chevrolet Camaro SS 6.2 V8 Gasolina (2010 a 2024)",
+      gasolina: { cidade: 6.4, estrada: 9.6 },
+      etanol:   null
+    },
+    "chevette_16": {
+      nome: "Chevrolet Chevette 1.6 Gasolina (1982 a 1993)",
+      gasolina: { cidade: 8.6, estrada: 12.1 },
+      etanol:   null
+    },
     "onix_10_g1": {
       nome: "Chevrolet Onix 1.0 Joy / LT Flex (2012 a 2019)",
       gasolina: { cidade: 12.9, estrada: 15.3 },
@@ -140,86 +180,60 @@ const MONTADORAS = {
       etanol:   { cidade: 5.6, estrada: 6.7 }
     }
   },
-  "Volkswagen (VW)": {
-    "gol_10": {
-      nome: "VW Gol 1.0 Total Flex G4/G5/G6 (2008 a 2016)",
-      gasolina: { cidade: 12.1, estrada: 14.5 },
-      etanol:   { cidade: 8.4, estrada: 10.2 }
-    },
-    "gol_16": {
-      nome: "VW Gol 1.6 MSI Total Flex (2008 a 2022)",
-      gasolina: { cidade: 11.1, estrada: 13.1 },
-      etanol:   { cidade: 7.6, estrada: 9.2 }
-    },
-    "fox_16": {
-      nome: "VW Fox 1.6 Prime / Highline Flex (2010 a 2021)",
-      gasolina: { cidade: 10.7, estrada: 13.2 },
-      etanol:   { cidade: 7.4, estrada: 9.1 }
-    },
-    "up_10_tsi": {
-      nome: "VW Up! 1.0 TSI Turbo Flex (2015 a 2021)",
-      gasolina: { cidade: 14.3, estrada: 16.3 },
-      etanol:   { cidade: 10.0, estrada: 11.5 }
-    },
-    "polo_track": {
-      nome: "VW Polo Track 1.0 MPI Flex (2023 a 2026)",
-      gasolina: { cidade: 13.5, estrada: 15.0 },
-      etanol:   { cidade: 9.3, estrada: 10.5 }
-    },
-    "polo_10_tsi": {
-      nome: "VW Polo 1.0 TSI Comfortline / Highline Flex (2017 a 2026)",
-      gasolina: { cidade: 11.6, estrada: 14.1 },
-      etanol:   { cidade: 8.0, estrada: 9.8 }
-    },
-    "virtus_10_tsi": {
-      nome: "VW Virtus 1.0 TSI Highline Flex (2018 a 2026)",
-      gasolina: { cidade: 11.2, estrada: 14.6 },
-      etanol:   { cidade: 7.8, estrada: 10.2 }
-    },
-    "golf_14_gasolina": {
-      nome: "VW Golf 1.4 TSI Highline Gasolina (2013 a 2015)",
-      gasolina: { cidade: 11.7, estrada: 14.3 },
+  "Chrysler": {
+    "chrysler_300c_36": {
+      nome: "Chrysler 300C 3.6 V6 Pentastar Gasolina (2012 a 2021)",
+      gasolina: { cidade: 7.5, estrada: 11.0 },
       etanol:   null
     },
-    "golf_14_flex": {
-      nome: "VW Golf 1.4 TSI Total Flex (2016 a 2019)",
-      gasolina: { cidade: 11.3, estrada: 13.7 },
-      etanol:   { cidade: 7.7, estrada: 9.5 }
-    },
-    "jetta_14_tsi": {
-      nome: "VW Jetta 1.4 TSI Comfortline / R-Line Flex (2016 a 2021)",
-      gasolina: { cidade: 11.0, estrada: 14.0 },
-      etanol:   { cidade: 7.4, estrada: 9.6 }
-    },
-    "jetta_gli": {
-      nome: "VW Jetta GLI 2.0 TSI Gasolina (2019 a 2024)",
-      gasolina: { cidade: 9.9, estrada: 12.5 },
+    "chrysler_300c_57": {
+      nome: "Chrysler 300C 5.7 V8 Hemi Gasolina (2005 a 2012)",
+      gasolina: { cidade: 5.8, estrada: 9.2 },
+      etanol:   null
+    }
+  },
+  "Dodge": {
+    "dodge_dart_318": {
+      nome: "Dodge Dart 5.2 318 V8 Gasolina (1969 a 1981)",
+      gasolina: { cidade: 5.0, estrada: 7.5 },
       etanol:   null
     },
-    "tcross_10_tsi": {
-      nome: "VW T-Cross 1.0 TSI 200 Flex (2019 a 2026)",
-      gasolina: { cidade: 11.6, estrada: 14.0 },
-      etanol:   { cidade: 8.1, estrada: 9.8 }
+    "dodge_charger_rt": {
+      nome: "Dodge Charger R/T 5.2 318 V8 Gasolina (1971 a 1980)",
+      gasolina: { cidade: 4.8, estrada: 7.2 },
+      etanol:   null
+    }
+  },
+  "Ferrari": {
+    "ferrari_458": {
+      nome: "Ferrari 458 Italia 4.5 V8 Gasolina (2009 a 2015)",
+      gasolina: { cidade: 5.0, estrada: 7.8 },
+      etanol:   null
     },
-    "tcross_14_tsi": {
-      nome: "VW T-Cross 1.4 TSI 250 Highline Flex (2019 a 2026)",
-      gasolina: { cidade: 11.0, estrada: 13.2 },
-      etanol:   { cidade: 7.7, estrada: 9.3 }
+    "ferrari_488": {
+      nome: "Ferrari 488 GTB 3.9 V8 Biturbo Gasolina (2015 a 2019)",
+      gasolina: { cidade: 6.0, estrada: 8.5 },
+      etanol:   null
     },
-    "nivus_10_tsi": {
-      nome: "VW Nivus 1.0 TSI 200 Flex (2020 a 2026)",
-      gasolina: { cidade: 11.9, estrada: 14.1 },
-      etanol:   { cidade: 8.3, estrada: 10.1 }
+    "ferrari_f8": {
+      nome: "Ferrari F8 Tributo 3.9 V8 Biturbo Gasolina (2019 a 2023)",
+      gasolina: { cidade: 6.0, estrada: 8.3 },
+      etanol:   null
     },
-    "taos_14_tsi": {
-      nome: "VW Taos 1.4 250 TSI Flex (2021 a 2026)",
-      gasolina: { cidade: 10.7, estrada: 13.0 },
-      etanol:   { cidade: 7.4, estrada: 9.0 }
+    "ferrari_roma": {
+      nome: "Ferrari Roma 3.9 V8 Biturbo Gasolina (2020 a 2026)",
+      gasolina: { cidade: 6.8, estrada: 9.2 },
+      etanol:   null
     },
-    "saveiro_16": {
-      nome: "VW Saveiro 1.6 MSI Flex (2014 a 2024)",
-      gasolina: { cidade: 11.5, estrada: 12.9 },
-      etanol:   { cidade: 7.9, estrada: 9.1 }
+    "ferrari_296_gtb": {
+      nome: "Ferrari 296 GTB 3.0 V6 Híbrida Gasolina (2021 a 2026)",
+      gasolina: { cidade: 11.0, estrada: 13.5 },
+      etanol:   null
+    },
+    "ferrari_sf90": {
+      nome: "Ferrari SF90 Stradale 4.0 V8 Híbrida Gasolina (2019 a 2026)",
+      gasolina: { cidade: 10.5, estrada: 12.8 },
+      etanol:   null
     }
   },
   "Fiat": {
@@ -258,6 +272,11 @@ const MONTADORAS = {
       gasolina: { cidade: 12.0, estrada: 14.6 },
       etanol:   { cidade: 8.5, estrada: 10.2 }
     },
+    "pulse_abarth_13": {
+      nome: "Fiat Pulse Abarth 1.3 Turbo 270 Flex (2022 a 2026)",
+      gasolina: { cidade: 10.0, estrada: 12.3 },
+      etanol:   { cidade: 6.8, estrada: 8.8 }
+    },
     "fastback_10_turbo": {
       nome: "Fiat Fastback 1.0 Turbo 200 Flex (2022 a 2026)",
       gasolina: { cidade: 11.9, estrada: 13.9 },
@@ -289,46 +308,71 @@ const MONTADORAS = {
       etanol:   { cidade: 7.4, estrada: 8.7 }
     }
   },
-  "Toyota": {
-    "corolla_20_g11": {
-      nome: "Toyota Corolla 2.0 XEi / Altis Flex (2014 a 2019)",
-      gasolina: { cidade: 10.6, estrada: 12.6 },
-      etanol:   { cidade: 7.2, estrada: 8.8 }
+  "Ford": {
+    "focus_titanium_20": {
+      nome: "Ford Focus Titanium 2.0 Direct Flex (2013 a 2019)",
+      gasolina: { cidade: 8.0, estrada: 13.0 },
+      etanol:   { cidade: 6.7, estrada: 9.0 }
     },
-    "corolla_20_dynamic": {
-      nome: "Toyota Corolla 2.0 Dynamic Force Flex (2019 a 2026)",
-      gasolina: { cidade: 11.9, estrada: 14.2 },
-      etanol:   { cidade: 8.3, estrada: 9.8 }
+    "focus_16_se": {
+      nome: "Ford Focus SE 1.6 Ti-VCT Flex (2013 a 2019)",
+      gasolina: { cidade: 10.5, estrada: 13.0 },
+      etanol:   { cidade: 7.2, estrada: 9.2 }
     },
-    "corolla_18_hybrid": {
-      nome: "Toyota Corolla 1.8 Altis Hybrid Flex (2019 a 2026)",
-      gasolina: { cidade: 17.5, estrada: 15.2 },
-      etanol:   { cidade: 11.8, estrada: 10.5 }
+    "ka_10": {
+      nome: "Ford Ka 1.0 SE / SEL Flex (2014 a 2021)",
+      gasolina: { cidade: 13.0, estrada: 15.1 },
+      etanol:   { cidade: 8.9, estrada: 10.4 }
     },
-    "corolla_cross_20": {
-      nome: "Toyota Corolla Cross 2.0 XR / XRE Flex (2021 a 2026)",
-      gasolina: { cidade: 11.5, estrada: 13.0 },
-      etanol:   { cidade: 8.0, estrada: 9.0 }
+    "ka_15_dragon": {
+      nome: "Ford Ka 1.5 Dragon Ti-VCT Flex (2018 a 2021)",
+      gasolina: { cidade: 12.9, estrada: 14.8 },
+      etanol:   { cidade: 8.9, estrada: 10.2 }
     },
-    "corolla_cross_hybrid": {
-      nome: "Toyota Corolla Cross 1.8 Hybrid Flex (2021 a 2026)",
-      gasolina: { cidade: 17.0, estrada: 14.7 },
-      etanol:   { cidade: 11.8, estrada: 9.7 }
+    "fiesta_16": {
+      nome: "Ford New Fiesta 1.6 SE Flex (2013 a 2019)",
+      gasolina: { cidade: 11.7, estrada: 13.9 },
+      etanol:   { cidade: 8.0, estrada: 9.9 }
     },
-    "etios_13_15": {
-      nome: "Toyota Etios 1.3 / 1.5 X / XLS Flex (2012 a 2021)",
-      gasolina: { cidade: 12.5, estrada: 14.8 },
-      etanol:   { cidade: 8.6, estrada: 10.3 }
+    "fiesta_ecoboost": {
+      nome: "Ford Fiesta 1.0 EcoBoost Turbo Gasolina (2016 a 2018)",
+      gasolina: { cidade: 12.2, estrada: 15.3 },
+      etanol:   null
     },
-    "yaris_15": {
-      nome: "Toyota Yaris 1.5 XL / XLS Flex (2018 a 2026)",
-      gasolina: { cidade: 12.2, estrada: 14.6 },
-      etanol:   { cidade: 8.7, estrada: 10.1 }
+    "fusion_25": {
+      nome: "Ford Fusion 2.5 i-VCT Flex (2013 a 2018)",
+      gasolina: { cidade: 8.5, estrada: 12.3 },
+      etanol:   { cidade: 5.4, estrada: 8.2 }
     },
-    "hilux_27_flex": {
-      nome: "Toyota Hilux 2.7 Dual VVT-i Flex (2016 a 2021)",
-      gasolina: { cidade: 6.9, estrada: 8.1 },
-      etanol:   { cidade: 4.8, estrada: 5.6 }
+    "fusion_ecoboost": {
+      nome: "Ford Fusion Titanium 2.0 EcoBoost AWD Gasolina (2013 a 2019)",
+      gasolina: { cidade: 8.2, estrada: 11.1 },
+      etanol:   null
+    },
+    "fusion_hybrid": {
+      nome: "Ford Fusion Titanium Hybrid Gasolina (2013 a 2019)",
+      gasolina: { cidade: 16.8, estrada: 15.1 },
+      etanol:   null
+    },
+    "ecosport_15": {
+      nome: "Ford EcoSport 1.5 Ti-VCT Dragon Flex (2017 a 2021)",
+      gasolina: { cidade: 11.6, estrada: 13.1 },
+      etanol:   { cidade: 8.3, estrada: 9.0 }
+    },
+    "ecosport_20": {
+      nome: "Ford EcoSport Titanium 2.0 Direct Flex (2017 a 2021)",
+      gasolina: { cidade: 9.7, estrada: 11.8 },
+      etanol:   { cidade: 6.8, estrada: 8.2 }
+    },
+    "ranger_25": {
+      nome: "Ford Ranger 2.5 Duratec Flex (2012 a 2019)",
+      gasolina: { cidade: 6.7, estrada: 8.0 },
+      etanol:   { cidade: 4.8, estrada: 5.7 }
+    },
+    "territory_15": {
+      nome: "Ford Territory 1.5 Turbo EcoBoost Gasolina (2020 a 2023)",
+      gasolina: { cidade: 9.2, estrada: 10.0 },
+      etanol:   null
     }
   },
   "Honda": {
@@ -410,7 +454,196 @@ const MONTADORAS = {
       etanol:   { cidade: 7.7, estrada: 8.7 }
     }
   },
+  "Jeep": {
+    "renegade_18": {
+      nome: "Jeep Renegade 1.8 16V E.torQ Flex (2015 a 2021)",
+      gasolina: { cidade: 10.0, estrada: 12.0 },
+      etanol:   { cidade: 6.9, estrada: 8.6 }
+    },
+    "renegade_13_t270": {
+      nome: "Jeep Renegade 1.3 T270 Sport / Longitude Flex (2022 a 2026)",
+      gasolina: { cidade: 11.0, estrada: 12.8 },
+      etanol:   { cidade: 7.7, estrada: 9.1 }
+    },
+    "compass_20_flex": {
+      nome: "Jeep Compass 2.0 Tigershark Flex (2016 a 2021)",
+      gasolina: { cidade: 8.8, estrada: 10.8 },
+      etanol:   { cidade: 6.1, estrada: 7.5 }
+    },
+    "compass_13_t270": {
+      nome: "Jeep Compass 1.3 T270 Longitude / Limited Flex (2021 a 2026)",
+      gasolina: { cidade: 10.5, estrada: 12.1 },
+      etanol:   { cidade: 7.4, estrada: 8.7 }
+    },
+    "commander_13_t270": {
+      nome: "Jeep Commander 1.3 T270 Limited Flex (2021 a 2026)",
+      gasolina: { cidade: 9.8, estrada: 11.8 },
+      etanol:   { cidade: 6.9, estrada: 8.3 }
+    }
+  },
+  "Mercedes-AMG": {
+    "amg_one": {
+      nome: "Mercedes-AMG ONE 1.6 V6 Turbo E-Performance F1 Gasolina (2022 a 2026)",
+      gasolina: { cidade: 7.2, estrada: 8.5 },
+      etanol:   null
+    },
+    "amg_a45s": {
+      nome: "Mercedes-AMG A 45 S 4MATIC+ 2.0 Turbo Gasolina (2019 a 2026)",
+      gasolina: { cidade: 8.8, estrada: 11.2 },
+      etanol:   null
+    },
+    "amg_c63s_v8": {
+      nome: "Mercedes-AMG C 63 S 4.0 V8 Biturbo Gasolina (2015 a 2021)",
+      gasolina: { cidade: 7.1, estrada: 9.6 },
+      etanol:   null
+    },
+    "amg_c63s_e": {
+      nome: "Mercedes-AMG C 63 S E-Performance 2.0 Turbo Híbrido Gasolina (2023 a 2026)",
+      gasolina: { cidade: 10.2, estrada: 12.0 },
+      etanol:   null
+    },
+    "amg_gt": {
+      nome: "Mercedes-AMG GT Coupe 4.0 V8 Biturbo Gasolina (2015 a 2023)",
+      gasolina: { cidade: 6.8, estrada: 9.0 },
+      etanol:   null
+    },
+    "amg_g63": {
+      nome: "Mercedes-AMG G 63 4.0 V8 Biturbo Gasolina (2018 a 2026)",
+      gasolina: { cidade: 5.5, estrada: 6.8 },
+      etanol:   null
+    }
+  },
+  "Mercedes-Benz": {
+    "mb_c180": {
+      nome: "Mercedes-Benz C 180 1.6 CGI Turbo Gasolina (2014 a 2021)",
+      gasolina: { cidade: 11.1, estrada: 13.9 },
+      etanol:   null
+    },
+    "mb_c200_eq": {
+      nome: "Mercedes-Benz C 200 EQ Boost 1.5 Turbo Híbrido Gasolina (2018 a 2021)",
+      gasolina: { cidade: 11.8, estrada: 14.5 },
+      etanol:   null
+    },
+    "mb_c200_w206": {
+      nome: "Mercedes-Benz C 200 AMG Line 1.5 Turbo Híbrido Gasolina (2022 a 2026)",
+      gasolina: { cidade: 11.5, estrada: 14.2 },
+      etanol:   null
+    },
+    "mb_a200": {
+      nome: "Mercedes-Benz A 200 1.3 Turbo Sedan / Hatch Gasolina (2018 a 2026)",
+      gasolina: { cidade: 12.4, estrada: 14.9 },
+      etanol:   null
+    },
+    "mb_cla200": {
+      nome: "Mercedes-Benz CLA 200 1.3 Turbo Gasolina (2019 a 2026)",
+      gasolina: { cidade: 12.0, estrada: 14.6 },
+      etanol:   null
+    },
+    "mb_gla200": {
+      nome: "Mercedes-Benz GLA 200 1.3 Turbo Gasolina (2020 a 2026)",
+      gasolina: { cidade: 11.1, estrada: 13.6 },
+      etanol:   null
+    },
+    "mb_glc300": {
+      nome: "Mercedes-Benz GLC 300 4MATIC 2.0 Turbo Gasolina (2019 a 2026)",
+      gasolina: { cidade: 9.3, estrada: 11.8 },
+      etanol:   null
+    }
+  },
+  "Mini": {
+    "mini_cooper": {
+      nome: "Mini Cooper 1.5 TwinPower Turbo Gasolina (2014 a 2024)",
+      gasolina: { cidade: 12.8, estrada: 15.1 },
+      etanol:   null
+    },
+    "mini_cooper_s": {
+      nome: "Mini Cooper S 2.0 Turbo Gasolina (2014 a 2024)",
+      gasolina: { cidade: 11.4, estrada: 13.9 },
+      etanol:   null
+    },
+    "mini_countryman_s": {
+      nome: "Mini Countryman Cooper S ALL4 2.0 Turbo Gasolina (2017 a 2024)",
+      gasolina: { cidade: 10.5, estrada: 12.8 },
+      etanol:   null
+    }
+  },
+  "Nissan": {
+    "nissan_tiida_18": {
+      nome: "Nissan Tiida 1.8 16V Flex (2007 a 2013)",
+      gasolina: { cidade: 10.5, estrada: 13.0 },
+      etanol:   { cidade: 7.0, estrada: 9.1 }
+    },
+    "march_10_16": {
+      nome: "Nissan March 1.0 / 1.6 16V Flex (2011 a 2020)",
+      gasolina: { cidade: 12.6, estrada: 14.4 },
+      etanol:   { cidade: 8.5, estrada: 9.9 }
+    },
+    "versa_16": {
+      nome: "Nissan Versa 1.6 16V Sense / Advance Flex (2015 a 2026)",
+      gasolina: { cidade: 11.7, estrada: 13.9 },
+      etanol:   { cidade: 8.0, estrada: 10.0 }
+    },
+    "kicks_16": {
+      nome: "Nissan Kicks 1.6 16V Sense / Advance / Exclusive Flex (2016 a 2026)",
+      gasolina: { cidade: 11.4, estrada: 13.7 },
+      etanol:   { cidade: 7.8, estrada: 9.6 }
+    },
+    "sentra_20_g7": {
+      nome: "Nissan Sentra 2.0 16V SV / SL Gasolina (2014 a 2020)",
+      gasolina: { cidade: 9.9, estrada: 12.7 },
+      etanol:   null
+    },
+    "sentra_20_g8": {
+      nome: "Nissan Sentra 2.0 16V Advance / Exclusive Gasolina (2023 a 2026)",
+      gasolina: { cidade: 11.0, estrada: 13.9 },
+      etanol:   null
+    }
+  },
+  "Plymouth": {
+    "plymouth_roadrunner": {
+      nome: "Plymouth Road Runner 6.3 383 V8 Gasolina (1968 a 1975)",
+      gasolina: { cidade: 4.5, estrada: 7.0 },
+      etanol:   null
+    },
+    "plymouth_superbird": {
+      nome: "Plymouth Superbird 7.0 426 Hemi V8 Gasolina (1970)",
+      gasolina: { cidade: 3.8, estrada: 6.2 },
+      etanol:   null
+    }
+  },
+  "Porsche": {
+    "porsche_911_carrera": {
+      nome: "Porsche 911 Carrera S 3.0 Biturbo Gasolina (2016 a 2024)",
+      gasolina: { cidade: 8.8, estrada: 11.9 },
+      etanol:   null
+    },
+    "porsche_718_boxster": {
+      nome: "Porsche 718 Boxster / Cayman 2.0 Turbo Gasolina (2016 a 2024)",
+      gasolina: { cidade: 9.0, estrada: 11.8 },
+      etanol:   null
+    },
+    "porsche_macan": {
+      nome: "Porsche Macan 2.0 Turbo Gasolina (2014 a 2024)",
+      gasolina: { cidade: 8.5, estrada: 10.8 },
+      etanol:   null
+    },
+    "porsche_cayenne_hybrid": {
+      nome: "Porsche Cayenne E-Hybrid 3.0 V6 Turbo Gasolina (2018 a 2024)",
+      gasolina: { cidade: 16.0, estrada: 17.5 },
+      etanol:   null
+    },
+    "porsche_panamera_hybrid": {
+      nome: "Porsche Panamera 4 E-Hybrid 2.9 V6 Biturbo Gasolina (2017 a 2024)",
+      gasolina: { cidade: 17.0, estrada: 18.2 },
+      etanol:   null
+    }
+  },
   "Renault": {
+    "sandero_rs": {
+      nome: "Renault Sandero R.S. 2.0 16V Flex (2015 a 2021)",
+      gasolina: { cidade: 9.9, estrada: 11.4 },
+      etanol:   { cidade: 6.9, estrada: 8.3 }
+    },
     "kwid_10": {
       nome: "Renault Kwid 1.0 12V SCe Zen / Intense Flex (2017 a 2026)",
       gasolina: { cidade: 15.3, estrada: 15.7 },
@@ -447,57 +680,196 @@ const MONTADORAS = {
       etanol:   { cidade: 9.0, estrada: 9.7 }
     }
   },
-  "Jeep": {
-    "renegade_18": {
-      nome: "Jeep Renegade 1.8 16V E.torQ Flex (2015 a 2021)",
-      gasolina: { cidade: 10.0, estrada: 12.0 },
-      etanol:   { cidade: 6.9, estrada: 8.6 }
-    },
-    "renegade_13_t270": {
-      nome: "Jeep Renegade 1.3 T270 Sport / Longitude Flex (2022 a 2026)",
-      gasolina: { cidade: 11.0, estrada: 12.8 },
-      etanol:   { cidade: 7.7, estrada: 9.1 }
-    },
-    "compass_20_flex": {
-      nome: "Jeep Compass 2.0 Tigershark Flex (2016 a 2021)",
-      gasolina: { cidade: 8.8, estrada: 10.8 },
-      etanol:   { cidade: 6.1, estrada: 7.5 }
-    },
-    "compass_13_t270": {
-      nome: "Jeep Compass 1.3 T270 Longitude / Limited Flex (2021 a 2026)",
-      gasolina: { cidade: 10.5, estrada: 12.1 },
-      etanol:   { cidade: 7.4, estrada: 8.7 }
-    },
-    "commander_13_t270": {
-      nome: "Jeep Commander 1.3 T270 Limited Flex (2021 a 2026)",
-      gasolina: { cidade: 9.8, estrada: 11.8 },
-      etanol:   { cidade: 6.9, estrada: 8.3 }
-    }
-  },
-  "Nissan": {
-    "march_10_16": {
-      nome: "Nissan March 1.0 / 1.6 16V Flex (2011 a 2020)",
-      gasolina: { cidade: 12.6, estrada: 14.4 },
-      etanol:   { cidade: 8.5, estrada: 9.9 }
-    },
-    "versa_16": {
-      nome: "Nissan Versa 1.6 16V Sense / Advance Flex (2015 a 2026)",
-      gasolina: { cidade: 11.7, estrada: 13.9 },
-      etanol:   { cidade: 8.0, estrada: 10.0 }
-    },
-    "kicks_16": {
-      nome: "Nissan Kicks 1.6 16V Sense / Advance / Exclusive Flex (2016 a 2026)",
-      gasolina: { cidade: 11.4, estrada: 13.7 },
-      etanol:   { cidade: 7.8, estrada: 9.6 }
-    },
-    "sentra_20_g7": {
-      nome: "Nissan Sentra 2.0 16V SV / SL Gasolina (2014 a 2020)",
-      gasolina: { cidade: 9.9, estrada: 12.7 },
+  "Suzuki": {
+    "suzuki_swift_sport": {
+      nome: "Suzuki Swift Sport 1.6 16V Gasolina (2014 a 2017)",
+      gasolina: { cidade: 11.5, estrada: 13.6 },
       etanol:   null
     },
-    "sentra_20_g8": {
-      nome: "Nissan Sentra 2.0 16V Advance / Exclusive Gasolina (2023 a 2026)",
-      gasolina: { cidade: 11.0, estrada: 13.9 },
+    "suzuki_jimny_13": {
+      nome: "Suzuki Jimny 1.3 16V 4x4 Gasolina (2008 a 2022)",
+      gasolina: { cidade: 9.5, estrada: 10.7 },
+      etanol:   null
+    },
+    "suzuki_vitara_14": {
+      nome: "Suzuki Vitara 1.4 Turbo 4WD Gasolina (2016 a 2022)",
+      gasolina: { cidade: 12.0, estrada: 13.7 },
+      etanol:   null
+    }
+  },
+  "Toyota": {
+    "corolla_20_g11": {
+      nome: "Toyota Corolla 2.0 XEi / Altis Flex (2014 a 2019)",
+      gasolina: { cidade: 10.6, estrada: 12.6 },
+      etanol:   { cidade: 7.2, estrada: 8.8 }
+    },
+    "corolla_20_dynamic": {
+      nome: "Toyota Corolla 2.0 Dynamic Force Flex (2019 a 2026)",
+      gasolina: { cidade: 11.9, estrada: 14.2 },
+      etanol:   { cidade: 8.3, estrada: 9.8 }
+    },
+    "corolla_18_hybrid": {
+      nome: "Toyota Corolla 1.8 Altis Hybrid Flex (2019 a 2026)",
+      gasolina: { cidade: 17.5, estrada: 15.2 },
+      etanol:   { cidade: 11.8, estrada: 10.5 }
+    },
+    "corolla_cross_20": {
+      nome: "Toyota Corolla Cross 2.0 XR / XRE Flex (2021 a 2026)",
+      gasolina: { cidade: 11.5, estrada: 13.0 },
+      etanol:   { cidade: 8.0, estrada: 9.0 }
+    },
+    "corolla_cross_hybrid": {
+      nome: "Toyota Corolla Cross 1.8 Hybrid Flex (2021 a 2026)",
+      gasolina: { cidade: 17.0, estrada: 14.7 },
+      etanol:   { cidade: 11.8, estrada: 9.7 }
+    },
+    "etios_13_15": {
+      nome: "Toyota Etios 1.3 / 1.5 X / XLS Flex (2012 a 2021)",
+      gasolina: { cidade: 12.5, estrada: 14.8 },
+      etanol:   { cidade: 8.6, estrada: 10.3 }
+    },
+    "yaris_15": {
+      nome: "Toyota Yaris 1.5 XL / XLS Flex (2018 a 2026)",
+      gasolina: { cidade: 12.2, estrada: 14.6 },
+      etanol:   { cidade: 8.7, estrada: 10.1 }
+    },
+    "hilux_27_flex": {
+      nome: "Toyota Hilux 2.7 Dual VVT-i Flex (2016 a 2021)",
+      gasolina: { cidade: 6.9, estrada: 8.1 },
+      etanol:   { cidade: 4.8, estrada: 5.6 }
+    }
+  },
+  "Volkswagen (VW)": {
+    "polo_gts": {
+      nome: "VW Polo GTS 1.4 250 TSI Flex (2020 a 2026)",
+      gasolina: { cidade: 11.0, estrada: 13.7 },
+      etanol:   { cidade: 7.5, estrada: 9.6 }
+    },
+    "voyage_16": {
+      nome: "VW Voyage 1.6 MSI Total Flex (2008 a 2023)",
+      gasolina: { cidade: 11.1, estrada: 13.3 },
+      etanol:   { cidade: 7.5, estrada: 9.4 }
+    },
+    "voyage_10": {
+      nome: "VW Voyage 1.0 Total Flex (2008 a 2023)",
+      gasolina: { cidade: 12.9, estrada: 15.4 },
+      etanol:   { cidade: 8.9, estrada: 10.6 }
+    },
+    "gol_10": {
+      nome: "VW Gol 1.0 Total Flex G4/G5/G6 (2008 a 2016)",
+      gasolina: { cidade: 12.1, estrada: 14.5 },
+      etanol:   { cidade: 8.4, estrada: 10.2 }
+    },
+    "gol_16": {
+      nome: "VW Gol 1.6 MSI Total Flex (2008 a 2022)",
+      gasolina: { cidade: 11.1, estrada: 13.1 },
+      etanol:   { cidade: 7.6, estrada: 9.2 }
+    },
+    "fox_16": {
+      nome: "VW Fox 1.6 Prime / Highline Flex (2010 a 2021)",
+      gasolina: { cidade: 10.7, estrada: 13.2 },
+      etanol:   { cidade: 7.4, estrada: 9.1 }
+    },
+    "up_10_tsi": {
+      nome: "VW Up! 1.0 TSI Turbo Flex (2015 a 2021)",
+      gasolina: { cidade: 14.3, estrada: 16.3 },
+      etanol:   { cidade: 10.0, estrada: 11.5 }
+    },
+    "polo_track": {
+      nome: "VW Polo Track 1.0 MPI Flex (2023 a 2026)",
+      gasolina: { cidade: 13.5, estrada: 15.0 },
+      etanol:   { cidade: 9.3, estrada: 10.5 }
+    },
+    "polo_10_tsi": {
+      nome: "VW Polo 1.0 TSI Comfortline / Highline Flex (2017 a 2026)",
+      gasolina: { cidade: 11.6, estrada: 14.1 },
+      etanol:   { cidade: 8.0, estrada: 9.8 }
+    },
+    "virtus_10_tsi": {
+      nome: "VW Virtus 1.0 TSI Highline Flex (2018 a 2026)",
+      gasolina: { cidade: 11.2, estrada: 14.6 },
+      etanol:   { cidade: 7.8, estrada: 10.2 }
+    },
+    "golf_14_gasolina": {
+      nome: "VW Golf 1.4 TSI Highline Gasolina (2013 a 2015)",
+      gasolina: { cidade: 11.7, estrada: 14.3 },
+      etanol:   null
+    },
+    "golf_14_flex": {
+      nome: "VW Golf 1.4 TSI Total Flex (2016 a 2019)",
+      gasolina: { cidade: 11.3, estrada: 13.7 },
+      etanol:   { cidade: 7.7, estrada: 9.5 }
+    },
+    "jetta_14_tsi": {
+      nome: "VW Jetta 1.4 TSI Comfortline / R-Line Flex (2016 a 2021)",
+      gasolina: { cidade: 11.0, estrada: 14.0 },
+      etanol:   { cidade: 7.4, estrada: 9.6 }
+    },
+    "jetta_gli": {
+      nome: "VW Jetta GLI 2.0 TSI Gasolina (2019 a 2024)",
+      gasolina: { cidade: 9.9, estrada: 12.5 },
+      etanol:   null
+    },
+    "tcross_10_tsi": {
+      nome: "VW T-Cross 1.0 TSI 200 Flex (2019 a 2026)",
+      gasolina: { cidade: 11.6, estrada: 14.0 },
+      etanol:   { cidade: 8.1, estrada: 9.8 }
+    },
+    "tcross_14_tsi": {
+      nome: "VW T-Cross 1.4 TSI 250 Highline Flex (2019 a 2026)",
+      gasolina: { cidade: 11.0, estrada: 13.2 },
+      etanol:   { cidade: 7.7, estrada: 9.3 }
+    },
+    "nivus_10_tsi": {
+      nome: "VW Nivus 1.0 TSI 200 Flex (2020 a 2026)",
+      gasolina: { cidade: 11.9, estrada: 14.1 },
+      etanol:   { cidade: 8.3, estrada: 10.1 }
+    },
+    "taos_14_tsi": {
+      nome: "VW Taos 1.4 250 TSI Flex (2021 a 2026)",
+      gasolina: { cidade: 10.7, estrada: 13.0 },
+      etanol:   { cidade: 7.4, estrada: 9.0 }
+    },
+    "saveiro_16": {
+      nome: "VW Saveiro 1.6 MSI Flex (2014 a 2024)",
+      gasolina: { cidade: 11.5, estrada: 12.9 },
+      etanol:   { cidade: 7.9, estrada: 9.1 }
+    }
+  },
+  "Volvo": {
+    "volvo_xc60_t5_2016": {
+      nome: "Volvo XC60 T5 2.0 Turbo Drive-E Gasolina (2014 a 2017)",
+      gasolina: { cidade: 8.5, estrada: 11.7 },
+      etanol:   null
+    },
+    "volvo_xc40_t5": {
+      nome: "Volvo XC40 T5 Momentum / Inscription 2.0 Turbo Gasolina (2018 a 2022)",
+      gasolina: { cidade: 9.5, estrada: 11.9 },
+      etanol:   null
+    },
+    "volvo_xc40_t4": {
+      nome: "Volvo XC40 T4 FWD 2.0 Turbo Gasolina (2019 a 2022)",
+      gasolina: { cidade: 10.1, estrada: 12.5 },
+      etanol:   null
+    },
+    "volvo_xc60_t8": {
+      nome: "Volvo XC60 T8 Recharge Plug-in Hybrid Gasolina (2018 a 2026)",
+      gasolina: { cidade: 19.2, estrada: 20.0 },
+      etanol:   null
+    },
+    "volvo_xc90_t8": {
+      nome: "Volvo XC90 T8 Recharge Plug-in Hybrid Gasolina (2017 a 2026)",
+      gasolina: { cidade: 16.5, estrada: 17.8 },
+      etanol:   null
+    },
+    "volvo_s60_t5": {
+      nome: "Volvo S60 T4 / T5 Momentum 2.0 Turbo Gasolina (2019 a 2023)",
+      gasolina: { cidade: 10.2, estrada: 12.8 },
+      etanol:   null
+    },
+    "volvo_v40_t4": {
+      nome: "Volvo V40 T4 2.0 Turbo Gasolina (2014 a 2019)",
+      gasolina: { cidade: 10.4, estrada: 13.1 },
       etanol:   null
     }
   }
@@ -505,13 +877,20 @@ const MONTADORAS = {
 
 // Dicionário achatado para lookup rápido
 const CARROS_MAP = {};
+
+// 1. Destaque do Rafa
+for (const [key, dados] of Object.entries(CARRO_DESTAQUE)) {
+  CARROS_MAP[key] = dados;
+}
+
+// 2. Montadoras em ordem alfabética
 for (const [montadora, carros] of Object.entries(MONTADORAS)) {
   for (const [key, dados] of Object.entries(carros)) {
     CARROS_MAP[key] = dados;
   }
 }
 
-// Opções genéricas e personalizadas
+// 3. Opções genéricas e personalizadas
 const CARRO_GENERICO = "generico_flex";
 const CARRO_GASOLINA_GENERICO = "generico_gasolina";
 const CARRO_PERSONALIZADO = "personalizado";
@@ -573,6 +952,13 @@ const f1  = n => n.toLocaleString("pt-BR", { maximumFractionDigits: 1 });
 
 const temProp = (obj, chave) => Object.prototype.hasOwnProperty.call(obj, chave);
 const marcaValida = b => (typeof b === "string" && temProp(EFICIENCIA.premium.marcas, b)) ? b : MARCA_PADRAO;
+
+function removerAcentos(s) {
+  return String(s || "")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase();
+}
 
 function el(tag, props, ...filhos) {
   const n = document.createElement(tag);
@@ -662,57 +1048,114 @@ const CFG_KML   = { intMax: 2, decMax: 2, autoComma: false };
 ["kmGC", "kmGE", "kmEC", "kmEE"].forEach(id =>
   $(id).addEventListener("input", e => aplicarMascara(e, CFG_KML)));
 
-/* ====================== Inicialização do Seletor de Carros ====================== */
+/* ====================== Inicialização e Filtro do Seletor de Carros ====================== */
 
 const brandSel = $("brand");
 Object.keys(EFICIENCIA.premium.marcas).forEach(m =>
   brandSel.appendChild(el("option", { value: m }, m)));
 
 const carroSel = $("carro");
+const buscaCarroInput = $("buscaCarro");
 
-function popularSeletorCarros() {
+function popularSeletorCarros(filtroTexto = "") {
+  const valorAtual = carroSel.value || "focus_do_rafa";
   carroSel.replaceChildren();
 
-  // 1. Grupos por Montadora
-  for (const [montadora, carros] of Object.entries(MONTADORAS)) {
-    const optgroup = document.createElement("optgroup");
-    optgroup.label = "🚗 " + montadora;
-    for (const [chave, carro] of Object.entries(carros)) {
+  const termo = removerAcentos(filtroTexto.trim());
+  let primeiroEncontrado = null;
+  let valorAtualAindaExiste = false;
+
+  // 1. Topo: Destaque Especial (Focus do Rafa)
+  const itensDestaque = Object.entries(CARRO_DESTAQUE).filter(([, carro]) => {
+    if (!termo) return true;
+    return removerAcentos(carro.nome).includes(termo);
+  });
+
+  if (itensDestaque.length > 0) {
+    const optgroupDestaque = document.createElement("optgroup");
+    optgroupDestaque.label = "⭐ Destaque Especial";
+    for (const [chave, carro] of itensDestaque) {
       const opt = document.createElement("option");
       opt.value = chave;
       opt.textContent = carro.nome;
-      // Destaque inicial no Ford Focus Titanium 2.0 Direct Flex
-      if (chave === "focus_titanium_20") {
-        opt.selected = true;
-      }
-      optgroup.appendChild(opt);
+      if (!primeiroEncontrado) primeiroEncontrado = chave;
+      if (chave === valorAtual) valorAtualAindaExiste = true;
+      optgroupDestaque.appendChild(opt);
     }
-    carroSel.appendChild(optgroup);
+    carroSel.appendChild(optgroupDestaque);
   }
 
-  // 2. Grupo de Médias Genéricas e Opção Manual
-  const optgroupGeral = document.createElement("optgroup");
-  optgroupGeral.label = "⚙️ Padrões e Personalizado";
+  // 2. Montadoras em estrita ordem alfabética
+  const montadorasOrdenadas = Object.keys(MONTADORAS).sort((a, b) => a.localeCompare(b, "pt-BR"));
 
-  const optGenFlex = document.createElement("option");
-  optGenFlex.value = CARRO_GENERICO;
-  optGenFlex.textContent = CARROS_MAP[CARRO_GENERICO].nome;
-  optgroupGeral.appendChild(optGenFlex);
+  for (const montadora of montadorasOrdenadas) {
+    const carrosDaMontadora = Object.entries(MONTADORAS[montadora]).filter(([, carro]) => {
+      if (!termo) return true;
+      return removerAcentos(carro.nome).includes(termo) || removerAcentos(montadora).includes(termo);
+    });
 
-  const optGenGas = document.createElement("option");
-  optGenGas.value = CARRO_GASOLINA_GENERICO;
-  optGenGas.textContent = CARROS_MAP[CARRO_GASOLINA_GENERICO].nome;
-  optgroupGeral.appendChild(optGenGas);
+    if (carrosDaMontadora.length > 0) {
+      const optgroup = document.createElement("optgroup");
+      optgroup.label = "🚗 " + montadora;
+      for (const [chave, carro] of carrosDaMontadora) {
+        const opt = document.createElement("option");
+        opt.value = chave;
+        opt.textContent = carro.nome;
+        if (!primeiroEncontrado) primeiroEncontrado = chave;
+        if (chave === valorAtual) valorAtualAindaExiste = true;
+        optgroup.appendChild(opt);
+      }
+      carroSel.appendChild(optgroup);
+    }
+  }
 
-  const optCustom = document.createElement("option");
-  optCustom.value = CARRO_PERSONALIZADO;
-  optCustom.textContent = "Informar consumo oficial do meu carro";
-  optgroupGeral.appendChild(optCustom);
+  // 3. Grupo Padrões e Personalizado
+  const opcoesGerais = [
+    [CARRO_GENERICO, CARROS_MAP[CARRO_GENERICO].nome],
+    [CARRO_GASOLINA_GENERICO, CARROS_MAP[CARRO_GASOLINA_GENERICO].nome],
+    [CARRO_PERSONALIZADO, "Informar consumo oficial do meu carro"]
+  ].filter(([chave, nome]) => {
+    if (!termo) return true;
+    return removerAcentos(nome).includes(termo);
+  });
 
-  carroSel.appendChild(optgroupGeral);
+  if (opcoesGerais.length > 0) {
+    const optgroupGeral = document.createElement("optgroup");
+    optgroupGeral.label = "⚙️ Padrões e Personalizado";
+    for (const [chave, nome] of opcoesGerais) {
+      const opt = document.createElement("option");
+      opt.value = chave;
+      opt.textContent = nome;
+      if (!primeiroEncontrado) primeiroEncontrado = chave;
+      if (chave === valorAtual) valorAtualAindaExiste = true;
+      optgroupGeral.appendChild(opt);
+    }
+    carroSel.appendChild(optgroupGeral);
+  }
+
+  // Se nada foi encontrado na busca
+  if (!primeiroEncontrado) {
+    const optVazio = document.createElement("option");
+    optVazio.value = "";
+    optVazio.textContent = "Nenhum veículo encontrado para a busca";
+    optVazio.disabled = true;
+    optVazio.selected = true;
+    carroSel.appendChild(optVazio);
+  } else {
+    // Mantém o valor anterior se ele continuar visível; caso contrário, seleciona o primeiro filtrado
+    carroSel.value = valorAtualAindaExiste ? valorAtual : primeiroEncontrado;
+  }
 }
 
+// Inicializa com o Focus do Rafa no topo e selecionado
 popularSeletorCarros();
+carroSel.value = "focus_do_rafa";
+
+buscaCarroInput.addEventListener("input", e => {
+  popularSeletorCarros(e.target.value);
+  esconderResultado();
+  atualizarCampos();
+});
 
 const toggleDieselEl = $("toggleDiesel");
 const toggleEtanolEl = $("toggleEtanol");
@@ -745,8 +1188,11 @@ function esconderResultado() { $("result").hidden = true; }
 
 function obterCarro() {
   const escolha = carroSel.value;
+  if (!escolha) {
+    return { erro: "Selecione um veículo válido na lista." };
+  }
   if (escolha !== CARRO_PERSONALIZADO) {
-    const c = CARROS_MAP[escolha] || CARROS_MAP["focus_titanium_20"];
+    const c = CARROS_MAP[escolha] || CARROS_MAP["focus_do_rafa"];
     return { carro: c };
   }
   const comEtanol = toggleEtanolEl.checked;
@@ -1110,7 +1556,7 @@ function atualizarCampos() {
 
 // Event Listeners
 $("form").addEventListener("input", e => {
-  if (e.target.name === "percurso") return;
+  if (e.target.name === "percurso" || e.target.id === "buscaCarro") return;
   if (e.target.id === "litrosMistura") {
     atualizarModoRachador();
     return;
