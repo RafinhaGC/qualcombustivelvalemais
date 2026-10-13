@@ -12,7 +12,7 @@
      > *"Por que você quer comparar gasolina e etanol sendo que seu carro é diesel? 🤨"*
      > Detalhando que motores a diesel utilizam exclusivamente óleo diesel e seriam seriamente danificados com gasolina ou etanol.
 
-3. **Modo Rachador (Mistura "Carioca" 50/50)**:
+3. **Rabo de Galo (50/50)**:
    - Toggle dedicado para cálculo de misturas de alto desempenho.
    - **Restrição**: Disponível apenas quando os modos Diesel e Gasolina pura estão desligados (ou seja, veículos Flex).
    - O usuário informa o volume total desejado da mistura no tanque (ex.: 40 litros).

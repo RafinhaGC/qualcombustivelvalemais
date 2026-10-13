@@ -253,7 +253,7 @@ function ranking(carro, prices, brand, percurso) {
     .sort((a, b) => a.custoKm - b.custoKm);
 }
 
-/* ====================== Modo Rachador (Mistura Carioca E50) ====================== */
+/* ====================== Rabo de Galo (E50) ====================== */
 
 /*
  * Para atingir 50% de etanol e 50% de gasolina pura no tanque:
@@ -304,7 +304,7 @@ function atualizarModoRachador() {
   if (pComum !== null) {
     const res = calcularMisturaCarioca(litros, pEtanol, pComum, "comum");
     cards.push(el("div", { class: "rachador-card comum" },
-      el("div", { class: "rachador-title" }, "🔥 Mistura Carioca 50/50 com Gasolina Comum"),
+      el("div", { class: "rachador-title" }, "🔥 Rabo de Galo 50/50 com Gasolina Comum"),
       el("div", { class: "rachador-grid" },
         el("div", { class: "rachador-metric" },
           el("small", {}, "Gasolina comum (32% etanol)"),
@@ -329,7 +329,7 @@ function atualizarModoRachador() {
     const brand = marcaValida(brandSel.value);
     const res = calcularMisturaCarioca(litros, pEtanol, pPremium, "premium");
     cards.push(el("div", { class: "rachador-card premium" },
-      el("div", { class: "rachador-title" }, "⚡ Mistura Carioca 50/50 com Premium (" + brand + ")"),
+      el("div", { class: "rachador-title" }, "⚡ Rabo de Galo 50/50 com Premium (" + brand + ")"),
       el("div", { class: "rachador-grid" },
         el("div", { class: "rachador-metric" },
           el("small", {}, "Gasolina premium (25% etanol)"),
@@ -548,7 +548,7 @@ function atualizarCampos() {
   }
   $("etanolField").hidden = !comEtanol;
 
-  // Rachador: só funciona com diesel desligado e motores só a gasolina desligados (ou seja, quando etanolAtivo() é true)
+  // Rabo de Galo: só funciona com diesel desligado e motores só a gasolina desligados (ou seja, quando etanolAtivo() é true)
   const rachadorDisponivel = comEtanol;
   $("rachadorSection").hidden = !rachadorDisponivel;
   if (!rachadorDisponivel) {
